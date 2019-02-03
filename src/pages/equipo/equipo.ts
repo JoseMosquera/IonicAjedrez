@@ -32,9 +32,9 @@ export class EquipoPage {
       console.log("Eliminar equipo: ",equipo.nombre);
       let key = equipo.key;
       console.log(equipo);
-      this.fdb.database.ref('/Equipo/'+key).remove();
+      this.fdb.database.ref('/Equipos/'+key).remove();
       console.log("Equipo eliminado")
-      this.navCtrl.setRoot(EquipoPage);
+      this.navCtrl.setRoot(EquiposPage);
     }
 
   volver(){

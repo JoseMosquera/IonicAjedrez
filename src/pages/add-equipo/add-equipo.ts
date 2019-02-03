@@ -30,7 +30,7 @@ export class AddEquipoPage {
   }
 
   add(){
-    this.afdb.list("/Equipo/").push(this.equipo);
+    this.afdb.list("/Equipos/").push(this.equipo);
     this.navCtrl.setRoot(EquiposPage);
   }
 
