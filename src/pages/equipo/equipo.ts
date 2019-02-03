@@ -34,7 +34,7 @@ export class EquipoPage {
       console.log(equipo);
       this.fdb.database.ref('/Equipo/'+key).remove();
       console.log("Equipo eliminado")
-      this.navCtrl.setRoot(EquipoPage);
+      this.navCtrl.setRoot(EquiposPage);
     }
 
   volver(){
