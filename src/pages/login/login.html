@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Log in</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-item>
+		<ion-label color="primary" stacked>Email:</ion-label>
+		<ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" stacked>Password:</ion-label>
+		<ion-input type="password" [(ngModel)]="usuario.password"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<button ion-button (click)="login(usuario)">Iniciar Sesion</button>
+		<button ion-button (click)="register(usuario)">Registrarse</button><br>
+		<button ion-button (click)="forgot(usuario.email)">Olvidaste la contraseña?</button>
+	</ion-item>

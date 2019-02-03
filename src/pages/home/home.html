@@ -13,8 +13,17 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-item (click)="irPaginaEquipo()">
+      <ion-icon name="people" item-start></ion-icon>
+        Equipo
+    </ion-item>
     <ion-item (click)="irPaginaJugadores()">
       <ion-icon name="person" item-start></ion-icon>
         Jugadores
     </ion-item>
+
+    <button ion-button icon-start (click)="logout()" round color="danger">
+      <ion-icon name="close"></ion-icon>
+      Cerrar Sesión
+    </button>
 </ion-content>
