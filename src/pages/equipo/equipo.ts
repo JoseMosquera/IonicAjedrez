@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { HomePage } from '../home/home';
+import {AngularFireDatabase} from 'angularfire2/database';
 import { AlertController } from 'ionic-angular';
-import { Observable } from 'rxjs';
 import { Equipo } from '../../models/equipo';
-import { map } from 'rxjs/operators';
+import { EditEquipoPage } from '../edit-equipo/edit-equipo';
+import { EquiposPage } from '../equipos/equipos';
 
 @IonicPage()
 @Component({
@@ -14,52 +13,32 @@ import { map } from 'rxjs/operators';
 })
 export class EquipoPage {
 
-  /*
-  equipos = [];
-  ref = firebase.database().ref('equipos/');
-  inputText: string = '';
-  */
-
-  equipos: Observable<Equipo[]>;
-  equiposList: AngularFireList<any>;
-  myInput
+  equipo:Equipo;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fdb:AngularFireDatabase, public alert: AlertController) {
-    this.equiposList=fdb.list("/Equipo/");
-    this.equipos= this.equiposList.snapshotChanges().pipe(
-      map(changes=>
-        changes.map(c=>({key: c.payload.key, ...c.payload.val()}))
-        )
-    );
-    console.log(this.equipos);
+    this.equipo=this.navParams.get("equipo");
+    console.log(this.equipo);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EquipoPage');
   }
 
-  addEquipo(){
-    this.fdb.list("/Equipo/").push(this.myInput).then(data=>{
-      console.log(this.myInput + " creado.");
-      let alert = this.alert.create({
-        title: 'Correcto!',
-        subTitle: 'Tu equipo ha sido creado correctamente!',
-        buttons: ['Aceptar']
-      });
-      alert.present();
-      this.navCtrl.setRoot(EquipoPage);
-    }).catch(data=>{
-      let alert = this.alert.create({
-        title: 'Error!',
-        subTitle: 'Ha habido un error al crear el equipo!',
-        buttons: ['Aceptar']
-      });
-      alert.present();
-    });
+  editarEquipo(equipo){
+    this.navCtrl.setRoot(EditEquipoPage, {'equipo': equipo});
   }
 
+  eliminarEquipo(equipo){
+      console.log("Eliminar equipo: ",equipo.nombre);
+      let key = equipo.key;
+      console.log(equipo);
+      this.fdb.database.ref('/Equipo/'+key).remove();
+      console.log("Equipo eliminado")
+      this.navCtrl.setRoot(EquipoPage);
+    }
+
   volver(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(EquiposPage);
   }
 
 

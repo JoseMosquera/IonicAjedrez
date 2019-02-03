@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+        <button ion-button
+          icon-only (click)="volver()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+          </button>
+        </ion-buttons>
+      <ion-title>Editar Equipo</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input name="nombre" [(ngModel)]="equipo.nombre" value="{{equipo.nombre}}"></ion-input>
+    </ion-item>
+  
+    <button ion-button block clear (click)="update()">Actualizar</button>
+  </ion-content>

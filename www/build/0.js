@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 561:
+/***/ 573:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JugadoresPageModule", function() { return JugadoresPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquiposPageModule", function() { return EquiposPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jugadores__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipos__ = __webpack_require__(578);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var JugadoresPageModule = /** @class */ (function () {
-    function JugadoresPageModule() {
+var EquiposPageModule = /** @class */ (function () {
+    function EquiposPageModule() {
     }
-    JugadoresPageModule = __decorate([
+    EquiposPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__jugadores__["a" /* JugadoresPage */],
+                __WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__jugadores__["a" /* JugadoresPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */]),
             ],
         })
-    ], JugadoresPageModule);
-    return JugadoresPageModule;
+    ], EquiposPageModule);
+    return EquiposPageModule;
 }());
 
-//# sourceMappingURL=jugadores.module.js.map
+//# sourceMappingURL=equipos.module.js.map
 
 /***/ })
 

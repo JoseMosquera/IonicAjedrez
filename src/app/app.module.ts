@@ -16,6 +16,9 @@ import { EditJugadorPage } from '../pages/edit-jugador/edit-jugador';
 import { EquipoPage } from '../pages/equipo/equipo';
 import { LoginPage } from '../pages/login/login';
 import * as firebase from 'firebase';
+import { EquiposPage } from '../pages/equipos/equipos';
+import { EditEquipoPage } from '../pages/edit-equipo/edit-equipo';
+import { AddEquipoPage } from '../pages/add-equipo/add-equipo';
 
 var FirebaseConfig = {
   apiKey: "AIzaSyDcjQu8mvn7IglBgFRO_Q8HKxgOm-kGcrE",
@@ -36,7 +39,10 @@ firebase.initializeApp(FirebaseConfig);
     AddJugadorPage,
     EditJugadorPage,
     LoginPage,
-    EquipoPage
+    EquipoPage,
+    EquiposPage,
+    EditEquipoPage,
+    AddEquipoPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,10 @@ firebase.initializeApp(FirebaseConfig);
     AddJugadorPage,
     EditJugadorPage,
     LoginPage,
-    EquipoPage
+    EquipoPage,
+    EquiposPage,
+    EditEquipoPage,
+    AddEquipoPage
   ],
   providers: [
     StatusBar,

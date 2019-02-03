@@ -4,7 +4,7 @@ import { JugadoresPage } from "../../pages/jugadores/jugadores";
 import { LoginPage } from '../login/login';
 import * as firebase from 'firebase';
 import { AlertController } from 'ionic-angular';
-import { EquipoPage } from '../equipo/equipo';
+import { EquiposPage } from '../equipos/equipos';
 
 @Component({
   selector: 'page-home',
@@ -38,7 +38,7 @@ export class HomePage {
     });
   }
 
-  irPaginaEquipo(){
-    this.navCtrl.setRoot(EquipoPage);
+  irPaginaEquipos(){
+    this.navCtrl.setRoot(EquiposPage);
   }
 }

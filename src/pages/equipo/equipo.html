@@ -1,20 +1,20 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Equipo</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-item>
-      <ion-input [(ngModel)]="myInput" placeholder="Nombre de Equipo..."></ion-input>
-  </ion-item>
+    <ion-buttons>
+      <button ion-button
+        icon-only (click)="volver()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-navbar>
+      <ion-title>Perfil del equipo {{equipo.nombre}}</ion-title>
+    </ion-navbar>
+  </ion-header>
   
-  <button ion-button full (click)="addEquipo()">Añadir Equipo</button>
-  <button ion-button full (click)="volver()">Volver</button>
-
-  <ion-list>
-    <ion-item *ngFor="let equipo of equipos | async">
+  
+  <ion-content padding>
+    <ion-item>
       {{equipo.nombre}}
     </ion-item>
-  </ion-list>
-</ion-content>
+    <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
+    <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
+  </ion-content>
