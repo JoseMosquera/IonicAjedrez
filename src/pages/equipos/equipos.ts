@@ -19,7 +19,7 @@ export class EquiposPage {
   equiposList: AngularFireList<any>;
 
   constructor(public navCtrl: NavController, private afdb: AngularFireDatabase) {
-    this.equiposList = afdb.list("/Equipo/");
+    this.equiposList = afdb.list("/Equipos/");
     this.equipos =  this.equiposList.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))

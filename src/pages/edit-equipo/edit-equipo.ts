@@ -29,7 +29,7 @@ export class EditEquipoPage {
 
   update(){
     console.log("Equipo antes de ser actualizado: "+this.equipo.nombre);
-    this.afdb.list("/Equipo/").update(this.equipo.key, this.equipo);
+    this.afdb.list("/Equipos/").update(this.equipo.key, this.equipo);
     console.log("Equipo despues de ser actualizado: "+this.equipo.nombre);
     this.navCtrl.setRoot(EquiposPage);
   }
