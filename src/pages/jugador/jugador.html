@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-buttons>
+    <button ion-button
+      icon-only (click)="volver()">
+      <ion-icon name="md-arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-navbar>
+    <ion-title>Perfil del jugador {{jugador.nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    {{jugador.nombre}}
+  </ion-item>
+  <button ion-button (click)=editarJugador(jugador)>Editar Jugador</button>
+  <button ion-button (click)=eliminarJugador(jugador)>Eliminar Jugador</button>
+</ion-content>

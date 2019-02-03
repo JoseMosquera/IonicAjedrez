@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
+import { JugadoresPage } from "../../pages/jugadores/jugadores";
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,14 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, private menuCtrl: MenuController) {
   }
 
+  irPaginaJugadores(){
+    this.navCtrl.setRoot(JugadoresPage);
+  }
+
+  mostrarMenu(){
+    this.menuCtrl.toggle();
+  } 
 }
