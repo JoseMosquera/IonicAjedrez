@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+      <button ion-button
+        icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      <button ion-button
+        icon-only (click)="volver()">
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>
+        {{equipo.nombre}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let jugador of jugadores | async">
+        {{jugador.nombre}}, {{jugador.elo}}
+        <button ion-button (click)="add(jugador)">Añadir al equipo</button>
+      </ion-item>
+    </ion-list>
+  </ion-content>

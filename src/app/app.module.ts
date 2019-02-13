@@ -4,31 +4,37 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+//Angular
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import * as firebase from 'firebase';
 
+//Paginas
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+
+//Jugadores
 import { JugadorPage } from '../pages/jugador/jugador';
 import { JugadoresPage } from '../pages/jugadores/jugadores';
 import { AddJugadorPage } from '../pages/add-jugador/add-jugador';
 import { EditJugadorPage } from '../pages/edit-jugador/edit-jugador';
-import { EquipoPage } from '../pages/equipo/equipo';
-import { LoginPage } from '../pages/login/login';
-import * as firebase from 'firebase';
+
+//Equipos
 import { EquiposPage } from '../pages/equipos/equipos';
 import { EditEquipoPage } from '../pages/edit-equipo/edit-equipo';
 import { AddEquipoPage } from '../pages/add-equipo/add-equipo';
+import { AddJuegadorEquipoPage } from '../pages/add-juegador-equipo/add-juegador-equipo';
+import { EquipoPage } from '../pages/equipo/equipo';
 
 var FirebaseConfig = {
-  apiKey: "AIzaSyDcjQu8mvn7IglBgFRO_Q8HKxgOm-kGcrE",
-  authDomain: "ajedrez-825b6.firebaseapp.com",
-  databaseURL: "https://ajedrez-825b6.firebaseio.com",
-  projectId: "ajedrez-825b6",
-  storageBucket: "ajedrez-825b6.appspot.com",
-  messagingSenderId: "132712618727"
+  apiKey: "AIzaSyD0pjhIC2kswDJuETZWUGx6_MWRF0UTFqI",
+  authDomain: "idk3-a24c5.firebaseapp.com",
+  databaseURL: "https://idk3-a24c5.firebaseio.com",
+  projectId: "idk3-a24c5",
+  storageBucket: "idk3-a24c5.appspot.com",
+  messagingSenderId: "294146405285"
 };
-firebase.initializeApp(FirebaseConfig);
 
 @NgModule({
   declarations: [
@@ -42,7 +48,8 @@ firebase.initializeApp(FirebaseConfig);
     EquipoPage,
     EquiposPage,
     EditEquipoPage,
-    AddEquipoPage
+    AddEquipoPage,
+    AddJuegadorEquipoPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +69,8 @@ firebase.initializeApp(FirebaseConfig);
     EquipoPage,
     EquiposPage,
     EditEquipoPage,
-    AddEquipoPage
+    AddEquipoPage,
+    AddJuegadorEquipoPage
   ],
   providers: [
     StatusBar,

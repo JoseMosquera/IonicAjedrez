@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Equipo } from '../../models/equipo';
+import { Equipo } from '../../interfaces/equipo';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EquiposPage } from '../equipos/equipos';
 
@@ -19,7 +19,8 @@ import { EquiposPage } from '../equipos/equipos';
 export class AddEquipoPage {
 
   equipo: Equipo = {
-    nombre: ''
+    nombre: '',
+    categoria: ''
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {

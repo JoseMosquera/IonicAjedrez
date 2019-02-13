@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 570:
+/***/ 572:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddEquipoPageModule", function() { return AddEquipoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddJuegadorEquipoPageModule", function() { return AddJuegadorEquipoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_equipo__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_juegador_equipo__ = __webpack_require__(194);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddEquipoPageModule = /** @class */ (function () {
-    function AddEquipoPageModule() {
+var AddJuegadorEquipoPageModule = /** @class */ (function () {
+    function AddJuegadorEquipoPageModule() {
     }
-    AddEquipoPageModule = __decorate([
+    AddJuegadorEquipoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_equipo__["a" /* AddEquipoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__add_juegador_equipo__["a" /* AddJuegadorEquipoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_equipo__["a" /* AddEquipoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_juegador_equipo__["a" /* AddJuegadorEquipoPage */]),
             ],
         })
-    ], AddEquipoPageModule);
-    return AddEquipoPageModule;
+    ], AddJuegadorEquipoPageModule);
+    return AddJuegadorEquipoPageModule;
 }());
 
-//# sourceMappingURL=add-equipo.module.js.map
+//# sourceMappingURL=add-juegador-equipo.module.js.map
 
 /***/ })
 

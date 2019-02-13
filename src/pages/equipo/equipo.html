@@ -1,12 +1,12 @@
 <ion-header>
-    <ion-buttons>
-      <button ion-button
-        icon-only (click)="volver()">
-        <ion-icon name="md-arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-navbar>
-      <ion-title>Perfil del equipo {{equipo.nombre}}</ion-title>
+      <ion-buttons>
+        <button ion-button
+          icon-only (click)="volver()">
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Equipo, {{equipo.nombre}}</ion-title>
     </ion-navbar>
   </ion-header>
   
@@ -14,7 +14,11 @@
   <ion-content padding>
     <ion-item>
       {{equipo.nombre}}
+      <p *ngFor="let jugador of equipoJugadores | async">{{jugador.nombre}}, {{jugador.elo}}</p>
     </ion-item>
-    <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
-    <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
+    <ion-buttons>
+      <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
+      <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
+      <button ion-button (click)=addJugadores(equipo)>Añadir Jugadores</button>
+    </ion-buttons>
   </ion-content>

@@ -14,7 +14,42 @@
 <ion-content padding>
   <ion-item>
     <ion-label floating>Nombre</ion-label>
-    <ion-input name="nombre" [(ngModel)]="jugador.nombre" value="{{jugador.nombre}}"></ion-input>
+    <ion-input type="text" [(ngModel)]="nombre" name="nombre" value="{{ jugador.nombre }}"></ion-input>
+  </ion-item>
+    
+  <ion-item>
+    <ion-label floating>Partidos jugados:</ion-label>
+    <ion-input type="number" [(ngModel)]="j" name="equipo" value="{{ jugador.j }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Partidos ganados:</ion-label>
+    <ion-input type="number" [(ngModel)]="g" name="equipo" value="{{ jugador.g }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Partidos empatados:</ion-label>
+    <ion-input type="number" [(ngModel)]="e" name="equipo" value="{{ jugador.e }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Partidos perdidos:</ion-label>
+    <ion-input type="number" [(ngModel)]="p" name="equipo" value="{{ jugador.p }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Partidos en casa:</ion-label>
+    <ion-input type="number" [(ngModel)]="c" name="equipo" value="{{ jugador.c }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Partidos fuera de casa:</ion-label>
+    <ion-input type="number" [(ngModel)]="f" name="equipo" value="{{ jugador.f }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Elo:</ion-label>
+    <ion-input type="number" [(ngModel)]="elo" name="equipo" value="{{ jugador.elo }}"></ion-input>
   </ion-item>
 
   <button ion-button block clear (click)="update()">Actualizar</button>

@@ -16,6 +16,11 @@
       <ion-label floating>Nombre</ion-label>
       <ion-input name="nombre" [(ngModel)]="equipo.nombre" value="{{equipo.nombre}}"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>Categoria</ion-label>
+      <ion-input name="nombre" [(ngModel)]="equipo.categoria" value="{{equipo.categoria}}"></ion-input>
+    </ion-item>
   
     <button ion-button block clear (click)="update()">Actualizar</button>
   </ion-content>
