@@ -9,4 +9,5 @@ export interface Jugador{
     f:number,
     elo:number,
     rol:string,
+    equipo:boolean,
 }
