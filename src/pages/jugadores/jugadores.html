@@ -24,7 +24,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let jugador of jugadores | async" (click)="irJugador(jugador)">
-      {{jugador.nombre}}
+      {{jugador.nombre}}, {{jugador.elo}}
     </ion-item>
   </ion-list>
 </ion-content>

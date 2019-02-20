@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Jugador } from "../../interfaces/jugador";
 import { JugadoresPage } from '../jugadores/jugadores';
+import { Equipo } from '../../interfaces/equipo';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,7 @@ export class AddJugadorPage {
     c:0,
     f:0,
     elo:0,
-    rol:''
+    rol:'',
   };
   nombre:string;
   j:number;
@@ -34,7 +35,21 @@ export class AddJugadorPage {
   f:number;
   elo:number;
 
+  equipos: Observable<Equipo[]>;
+  equiposList: AngularFireList<any>;
+
   constructor(public navCtrl: NavController, private afdb: AngularFireDatabase) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AddJugadorPage');
+    this.equiposList = this.afdb.list("/Equipos/");
+    this.equipos =  this.equiposList.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+     )
+    );
+    console.log(this.equipos);
   }
 
   add(){
@@ -47,6 +62,7 @@ export class AddJugadorPage {
     this.jugador.f = 0;
     this.jugador.elo = 0;
     this.jugador.rol = "user";
+    console.log(this.jugador);
     this.afdb.list("/Jugadores/").push(this.jugador);
     this.navCtrl.setRoot(JugadoresPage);
   }

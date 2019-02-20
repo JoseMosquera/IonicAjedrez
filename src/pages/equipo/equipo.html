@@ -13,8 +13,8 @@
   
   <ion-content padding>
     <ion-item>
-      {{equipo.nombre}}
-      <p *ngFor="let jugador of equipoJugadores | async">{{jugador.nombre}}, {{jugador.elo}}</p>
+      <h1>{{equipo.nombre}}</h1>
+      <a *ngFor="let jugador of equipoJugadores">{{jugador.nombre}}, {{jugador.elo}}<br></a>
     </ion-item>
     <ion-buttons>
       <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>

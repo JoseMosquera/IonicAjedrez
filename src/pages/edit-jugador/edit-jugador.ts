@@ -38,13 +38,13 @@ export class EditJugadorPage {
   update(){
     console.log("Jugador antes de ser actualizado: "+this.jugador.elo);
     this.jugador.nombre=this.nombre;
-    this.jugador.j = this.j;
-    this.jugador.g = this.g;
-    this.jugador.e = this.e;
-    this.jugador.p = this.p;
-    this.jugador.c = this.c;
-    this.jugador.f = this.f;
-    this.jugador.elo = this.elo;
+    this.jugador.j = Number(this.j);
+    this.jugador.g = Number(this.g);
+    this.jugador.e = Number(this.e);
+    this.jugador.p = Number(this.p);
+    this.jugador.c = Number(this.c);
+    this.jugador.f = Number(this.f);
+    this.jugador.elo = Number(this.elo);
     this.afdb.list("/Jugadores/").update(this.jugador.key, this.jugador);
     console.log("Jugador despues de ser actualizado: "+this.jugador.elo);
     this.navCtrl.setRoot(JugadoresPage);

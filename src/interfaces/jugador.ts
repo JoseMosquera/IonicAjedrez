@@ -8,5 +8,5 @@ export interface Jugador{
     c:number,
     f:number,
     elo:number,
-    rol:string
+    rol:string,
 }

@@ -26,14 +26,16 @@ import { EditEquipoPage } from '../pages/edit-equipo/edit-equipo';
 import { AddEquipoPage } from '../pages/add-equipo/add-equipo';
 import { AddJuegadorEquipoPage } from '../pages/add-juegador-equipo/add-juegador-equipo';
 import { EquipoPage } from '../pages/equipo/equipo';
+import { JugadoresEquipoProvider } from '../providers/jugadores-equipo/jugadores-equipo';
+import { EquiposProvider } from '../providers/equipos/equipos';
 
 var FirebaseConfig = {
-  apiKey: "AIzaSyD0pjhIC2kswDJuETZWUGx6_MWRF0UTFqI",
-  authDomain: "idk3-a24c5.firebaseapp.com",
-  databaseURL: "https://idk3-a24c5.firebaseio.com",
-  projectId: "idk3-a24c5",
-  storageBucket: "idk3-a24c5.appspot.com",
-  messagingSenderId: "294146405285"
+  apiKey: "AIzaSyBOgG67GAPCRSOke2r_24VQ-SPaF6wy6ko",
+  authDomain: "ionic-d2a40.firebaseapp.com",
+  databaseURL: "https://ionic-d2a40.firebaseio.com",
+  projectId: "ionic-d2a40",
+  storageBucket: "ionic-d2a40.appspot.com",
+  messagingSenderId: "328071149034"
 };
 
 @NgModule({
@@ -75,7 +77,9 @@ var FirebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    JugadoresEquipoProvider,
+    EquiposProvider
   ]
 })
 export class AppModule {}
