@@ -18,7 +18,7 @@
   
   <ion-content padding>
     <ion-list>
-      <ion-item *ngFor="let jugador of jugadores | async">
+      <ion-item *ngFor="let jugador of jugadores">
         {{jugador.nombre}}, {{jugador.elo}}
         <button ion-button (click)="add(jugador)">Añadir al equipo</button>
       </ion-item>

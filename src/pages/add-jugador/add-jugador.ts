@@ -25,6 +25,7 @@ export class AddJugadorPage {
     f:0,
     elo:0,
     rol:'',
+    equipo:false,
   };
   nombre:string;
   j:number;

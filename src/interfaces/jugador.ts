@@ -10,4 +10,5 @@ export interface Jugador{
     elo:number,
     rol:string,
     email:string,
+    equipo:boolean,
 }

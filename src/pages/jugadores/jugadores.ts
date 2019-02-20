@@ -22,7 +22,7 @@ export class JugadoresPage {
     this.jugadoresList = afdb.list('/Jugadores/', ref => ref.orderByChild('elo'));
     this.jugadores =  this.jugadoresList.snapshotChanges().pipe(
       map(changes =>
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() })).reverse()
      )
     );
    console.log(this.jugadores);

@@ -6,11 +6,8 @@ import { Equipo } from '../../interfaces/equipo';
 import { EditEquipoPage } from '../edit-equipo/edit-equipo';
 import { EquiposPage } from '../equipos/equipos';
 import { AddJuegadorEquipoPage } from '../add-juegador-equipo/add-juegador-equipo';
-import { EquipoJugador } from '../../interfaces/equipoJugador';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { convertUrlToSegments } from 'ionic-angular/umd/navigation/url-serializer';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
+import { Jugador } from '../../interfaces/jugador';
 
 @IonicPage()
 @Component({
@@ -26,41 +23,6 @@ export class EquipoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, public alert: AlertController,
               private jugEquip: JugadoresEquipoProvider) {
     this.equipo=this.navParams.get("equipo");
-
-    // this.equiposJugadoresList=this.afdb.list('/EquiposJugadores/', ref => ref.child('equipo').equalTo(this.equipo.key));
-
-    // this.equipoJugadores = this.equiposJugadoresList.snapshotChanges().pipe(
-    //     map(changes =>
-    //       changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-    //     )
-    //   );
-    // console.log(this.equipo);
-    // console.log(this.equipoJugadores);
-
-    
-    // let jugadores:Array<any[]>;
-
-    // console.log(33);
-    // console.log( this.equipoJugadores);
-
-    //   this.equipoJugadores.forEach(jugador => {
-    //     console.log(2);
-    //     jugadores.push(jugador);
-    //   });
-
-    // console.log(3);
-
-    // jugadores = this.equipoJugadores = this.equiposJugadoresList.snapshotChanges().pipe(
-    //               map(changes =>
-    //                 changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-    //               )
-    //             );
-
-    // console.log("jugadores--------------------"+jugadores);
-
-    // jugadores.forEach(jugador => {
-      
-    // });
   }
 
   ionViewDidLoad() {
@@ -75,13 +37,13 @@ export class EquipoPage {
   }
 
   eliminarEquipo(equipo: Equipo){
-      console.log("Eliminar equipo: ",equipo.nombre);
-      let key = equipo.key;
-      console.log(equipo);
-      this.afdb.database.ref('/Equipos/'+key).remove();
-      console.log("Equipo eliminado")
-      this.navCtrl.setRoot(EquiposPage);
-    }
+    console.log("Eliminar equipo: ",equipo.nombre);
+    let key = equipo.key;
+    console.log(equipo);
+    this.afdb.database.ref('/Equipos/'+key).remove();
+    console.log("Equipo eliminado")
+    this.navCtrl.setRoot(EquiposPage);
+  }
 
   volver(){
     this.navCtrl.setRoot(EquiposPage);
@@ -103,7 +65,25 @@ export class EquipoPage {
 
   addJugadores(equipo: Equipo){
     var equiposJugadores = this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(this.equipo.key));
-    this.equipoJugadores = [];
+    this.equipoJugadores.splice(0, this.equipoJugadores.length);
     this.navCtrl.setRoot(AddJuegadorEquipoPage, {'equipo': equipo, 'equiposJugadores': equiposJugadores});
+  }
+
+  capitan(jugador: Jugador){
+    console.log("entra en la funcion capitan");
+    console.log(jugador);
+    if (jugador.rol=='user') {
+      console.log("capitan = user");
+      jugador.rol='capitan';
+      this.afdb.list("/Jugadores/").update(jugador.key, jugador);
+      this.equipoJugadores.splice(0, this.equipoJugadores.length);
+      this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+    } else if (jugador.rol=='capitan'){
+    console.log("capitan = capitan");
+      jugador.rol='user';
+      this.afdb.list("/Jugadores/").update(jugador.key, jugador);
+      this.equipoJugadores.splice(0, this.equipoJugadores.length);
+      this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+    }
   }
 }

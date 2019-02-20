@@ -13,48 +13,56 @@ export class JugadoresEquipoProvider {
   jugadores: Array<any> = [];
   jugadoresList: Array<any> = [];
 
+  
+  pertenecenList: Array<any> = [];
+  jugadoresListEquipo: Array<any> = [];
+
   constructor(private afdb: AngularFireDatabase) {
     console.log('Hello JugadoresEquipoProvider Provider');
   }
 
   obtenerJugadores(clave: string){
-    this.jugadores = [];
+    this.jugadores.length = 0;
+    this.jugadoresList.length = 0;
     console.log("funcion obtenerJugadores recibe un key de equipo: "+clave)
     return new Promise((resolve) => {
       this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(clave)).valueChanges().subscribe(data => {
         if (data) {
-          console.log("Variable data en el povider, retorna objetos con el mismo key equipo: "+JSON.stringify(data));
-          let jugador: any;
-          data.forEach(element => {
-            console.log(element);
-            
+          console.log("Variable data en el povider, retorna objetos con el mismo key equipo: ");
+          console.log(data);
+
+          this.jugadoresList = data;
+
+          this.jugadoresList.forEach(element => {
+
             let clave = element.jugador;
 
             this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
               console.log("Key del jugador provider: "+clave);
-                console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data));
-                let algo = {
-                  nombre: data[0].nombre,
-                  elo: data[0].elo,
-                }
-                this.jugadores.push(algo);
+              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data));
+              console.log("--------------------------");
+              console.log(data[0]);
+              this.jugadores.push(data[0]);
 
             });
-            // this.obtenerJugador(element.jugador)
-            // .then(exist => {
-            //   if (exist) {
-            //     this.jugadores.unshift(this.jugador)
-            //     console.log("Variable jugadores en provider dentro de foreach: "+this.jugadores);
-            //   } else {
-            //     return null;
-            //   }
-            // })
           });
-          
+
+
+          // data.forEach(element => {
+          //   console.log(element);
+            
+          //   let clave = element.jugador;
+
+            // this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
+            //   console.log("Key del jugador provider: "+clave);
+            //     console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data));
+            //     console.log("--------------------------");
+            //     console.log(data[0]);
+            //     this.jugadores.push(data[0]);
+
+          //   });
+          // });
           console.log(this.jugadores);
-          // this.jugadoresEquipo = jugador;
-          // let jugadores = this.jugadoresEquipo['jugador'];
-          // console.log("Intento de obtener solo jugadores: "+jugadores);
           resolve(true);
         } else {
           resolve(false);
@@ -63,38 +71,134 @@ export class JugadoresEquipoProvider {
     })
   }
 
-  listarJugadores(){
-    this.jugadoresList = [];
-    
+  listarJugadores(categoria: string){
+    this.pertenecenList.length = 0;
+    this.jugadoresListEquipo.length = 0;
+    return new Promise((resolve, reject) => {
+      if (categoria=="A") {
+        this.afdb.list('/Jugadores/', ref => ref.orderByChild('elo').startAt(1500)).valueChanges().subscribe(data => {
+          if(data){
+            console.log("entra en categoria A");
+            console.log("Variable data jugador en el povider funcion listarJugadores: "+JSON.stringify(data));
+
+            console.log("valor data");
+            console.log(data);
+            this.pertenecenList = data;
+            console.log("valor pertenecenList");
+            console.log(this.pertenecenList);
+
+            console.log("valor pertenecenList fuera de foreach")
+            console.log(this.pertenecenList);
+
+            this.pertenecenList.forEach(element => {
+              console.log("foreach obtener todos los jugadores con equipo false");
+              console.log(element);
+              if (element.equipo==false) {
+                console.log("el siguiente jugador tiene equipo=false");
+                console.log(element);
+                this.jugadoresListEquipo.push(element);
+                console.log(this.jugadoresListEquipo);
+              }
+              console.log("salida if e imprime la lista de jugadores");
+              console.log(this.jugadoresListEquipo);
+            });
+
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      } else if (categoria=="B"){
+        this.afdb.list('/Jugadores/', ref => ref.orderByChild('elo').startAt(1250).endAt(1499)).valueChanges().subscribe(data => {
+          if(data){
+            console.log("entra en categoria B");
+            console.log("Variable data jugador en el povider funcion listarJugadores: "+JSON.stringify(data));
+
+            console.log("forecah guardar jugadores en pertenecenList");
+            data.forEach(element => {
+              console.log(element);
+              this.pertenecenList.push(element);
+            });
+
+            this.pertenecenList.forEach(element => {
+              console.log("foreach obtener todos los jugadores con equipo false");
+              console.log(element);
+              if (element.equipo==false) {
+                console.log("el siguiente jugador tiene equipo=false");
+                console.log(element);
+                this.jugadoresListEquipo.push(element);
+                console.log(this.jugadoresListEquipo);
+              }
+              console.log("salida if e imprime la lista de jugadores");
+              console.log(this.jugadoresListEquipo);
+            });
+
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      } else if (categoria=="C"){
+        this.afdb.list('/Jugadores/', ref => ref.orderByChild('elo').startAt(1000).endAt(1249)).valueChanges().subscribe(data => {
+          if(data){
+            console.log("entra en categoria C");
+            console.log("Variable data jugador en el povider funcion listarJugadores: "+JSON.stringify(data));
+
+            console.log("forecah guardar jugadores en pertenecenList");
+            data.forEach(element => {
+              console.log(element);
+              this.pertenecenList.push(element);
+            });
+
+            this.pertenecenList.forEach(element => {
+              console.log("foreach obtener todos los jugadores con equipo false");
+              console.log(element);
+              if (element.equipo==false) {
+                console.log("el siguiente jugador tiene equipo=false");
+                console.log(element);
+                this.jugadoresListEquipo.push(element);
+                console.log(this.jugadoresListEquipo);
+              }
+              console.log("salida if e imprime la lista de jugadores");
+              console.log(this.jugadoresListEquipo);
+            });
+
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      } else if (categoria=="D"){
+        this.afdb.list('/Jugadores/', ref => ref.orderByChild('elo').startAt(750).endAt(999)).valueChanges().subscribe(data => {
+          if(data){
+            console.log("entra en categoria D");
+            console.log("Variable data jugador en el povider funcion listarJugadores: "+JSON.stringify(data));
+
+            console.log("forecah guardar jugadores en pertenecenList");
+            data.forEach(element => {
+              console.log(element);
+              this.pertenecenList.push(element);
+            });
+
+            this.pertenecenList.forEach(element => {
+              console.log("foreach obtener todos los jugadores con equipo false");
+              console.log(element);
+              if (element.equipo==false) {
+                console.log("el siguiente jugador tiene equipo=false");
+                console.log(element);
+                this.jugadoresListEquipo.push(element);
+                console.log(this.jugadoresListEquipo);
+              }
+              console.log("salida if e imprime la lista de jugadores");
+              console.log(this.jugadoresListEquipo);
+            });
+
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      }
+    })
   }
-
-  // obtenerJugador(clave: string){
-  //   console.log("funcion obtenerJugador recibe un key de jugador provider: "+clave)
-  //   return new Promise((resolve, reject) => {
-  //     this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
-  //       if (data) {
-  //         console.log("Key del jugador provider: "+clave)
-  //           this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
-  //             console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data));
-  //             this.jugador = data;
-  //             console.log("Variable jugador en el povider funcion obtenerJugador: "+this.jugador);
-  //           });
-  //         // console.log("Variable data en el povider: "+JSON.stringify(data));
-  //         // let jugador: any;
-  //         // data.forEach(element => {
-  //         //   console.log(element.jugador);
-            
-  //         // });
-  //         // this.jugadoresEquipo = jugador;
-  //         // // let jugadores = this.jugadoresEquipo['jugador'];
-  //         // // console.log("Intento de obtener solo jugadores: "+jugadores);
-  //         // console.log("Variable jugadoresEquipo en el povider: "+this.jugadoresEquipo);
-  //         resolve(true);
-  //       } else {
-  //         resolve(false);
-  //       }
-  //     })
-  //   })
-  // }
-
 }

@@ -8,13 +8,23 @@
       </ion-buttons>
       <ion-title>Equipo, {{equipo.nombre}}</ion-title>
     </ion-navbar>
-  </ion-header> 
+  </ion-header>
   
 <ion-content padding>
-  <ion-item>
-    {{equipo.nombre}}
-    <p *ngFor="let jugador of equipoJugadores | async">{{jugador.nombre}}, {{jugador.elo}}</p>
+  <h1>{{equipo.nombre}}</h1>
+  <ion-item *ngFor="let jugador of equipoJugadores">
+    <p *ngIf="jugador.rol=='capitan'; else noCapitan" style="color: red">{{jugador.nombre}}, {{jugador.elo}}</p>
+      <ng-template #noCapitan>
+        <p *ngIf="jugador.rol=='user'; else noCapitan" style="color: black">{{jugador.nombre}}, {{jugador.elo}}</p>
+      </ng-template>
+
+
+    <!-- <button ion-button *ngIf="jugador.rol=='user'; else noCapitan" (click)=capitan(jugador)>Asignar Capitan</button>
+        <ng-template #noCapitan>
+            <button ion-button *ngIf="jugador.rol=='capitan'; else noCapitan" (click)=capitan(jugador)>Desasignar Capitan</button>
+        </ng-template> -->
   </ion-item>
+
   <ion-buttons>
     <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
     <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
