@@ -27,13 +27,17 @@ import { AddEquipoPage } from '../pages/add-equipo/add-equipo';
 import { AddJuegadorEquipoPage } from '../pages/add-juegador-equipo/add-juegador-equipo';
 import { EquipoPage } from '../pages/equipo/equipo';
 
+//Jornadas
+import {JornadasPage} from '../pages/jornadas/jornadas';
+import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
+
 var FirebaseConfig = {
-  apiKey: "AIzaSyD0pjhIC2kswDJuETZWUGx6_MWRF0UTFqI",
-  authDomain: "idk3-a24c5.firebaseapp.com",
-  databaseURL: "https://idk3-a24c5.firebaseio.com",
-  projectId: "idk3-a24c5",
-  storageBucket: "idk3-a24c5.appspot.com",
-  messagingSenderId: "294146405285"
+  apiKey: "AIzaSyBOgG67GAPCRSOke2r_24VQ-SPaF6wy6ko",
+  authDomain: "ionic-d2a40.firebaseapp.com",
+  databaseURL: "https://ionic-d2a40.firebaseio.com",
+  projectId: "ionic-d2a40",
+  storageBucket: "ionic-d2a40.appspot.com",
+  messagingSenderId: "328071149034",
 };
 
 @NgModule({
@@ -49,7 +53,9 @@ var FirebaseConfig = {
     EquiposPage,
     EditEquipoPage,
     AddEquipoPage,
-    AddJuegadorEquipoPage
+    AddJuegadorEquipoPage,
+    JornadasPage,
+    AddJornadaPage,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,9 @@ var FirebaseConfig = {
     EquiposPage,
     EditEquipoPage,
     AddEquipoPage,
-    AddJuegadorEquipoPage
+    AddJuegadorEquipoPage,
+    JornadasPage,
+    AddJornadaPage
   ],
   providers: [
     StatusBar,

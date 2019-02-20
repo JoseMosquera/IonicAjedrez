@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 577:
+/***/ 581:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquiposPageModule", function() { return EquiposPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JornadasPageModule", function() { return JornadasPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipos__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jornadas__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EquiposPageModule = /** @class */ (function () {
-    function EquiposPageModule() {
+var JornadasPageModule = /** @class */ (function () {
+    function JornadasPageModule() {
     }
-    EquiposPageModule = __decorate([
+    JornadasPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */],
+                __WEBPACK_IMPORTED_MODULE_2__jornadas__["a" /* JornadasPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__jornadas__["a" /* JornadasPage */]),
             ],
         })
-    ], EquiposPageModule);
-    return EquiposPageModule;
+    ], JornadasPageModule);
+    return JornadasPageModule;
 }());
 
-//# sourceMappingURL=equipos.module.js.map
+//# sourceMappingURL=jornadas.module.js.map
 
 /***/ })
 
