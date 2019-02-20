@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button
+        icon-only (click)="volver()">
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Añadir Jornada</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input name="nombre" [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Fuera o en casa:</ion-label>
+      <ion-select [(ngModel)]="casa">
+        <ion-option value=True>En casa</ion-option>
+        <ion-option value=False>Fuera</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Fecha:</ion-label>
+    <ion-datetime name="fecha" [(ngModel)]="fecha" display-format="D/MM/YYYY" picker-format="D MMMM YYYY"></ion-datetime>
+  </ion-item>
+  <button ion-button block clear (click)="addJornada()">Añadir Jornada</button>
+</ion-content>

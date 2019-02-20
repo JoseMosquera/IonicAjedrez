@@ -29,6 +29,10 @@ import { EquipoPage } from '../pages/equipo/equipo';
 import { JugadoresEquipoProvider } from '../providers/jugadores-equipo/jugadores-equipo';
 import { EquiposProvider } from '../providers/equipos/equipos';
 
+//Jornadas
+import {JornadasPage} from '../pages/jornadas/jornadas';
+import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
+
 var FirebaseConfig = {
   apiKey: "AIzaSyBOgG67GAPCRSOke2r_24VQ-SPaF6wy6ko",
   authDomain: "ionic-d2a40.firebaseapp.com",
@@ -51,7 +55,9 @@ var FirebaseConfig = {
     EquiposPage,
     EditEquipoPage,
     AddEquipoPage,
-    AddJuegadorEquipoPage
+    AddJuegadorEquipoPage,
+    JornadasPage,
+    AddJornadaPage,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,9 @@ var FirebaseConfig = {
     EquiposPage,
     EditEquipoPage,
     AddEquipoPage,
-    AddJuegadorEquipoPage
+    AddJuegadorEquipoPage,
+    JornadasPage,
+    AddJornadaPage
   ],
   providers: [
     StatusBar,

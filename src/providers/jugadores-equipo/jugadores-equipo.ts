@@ -11,6 +11,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class JugadoresEquipoProvider {
 
   jugadores: Array<any> = [];
+  jugadoresList: Array<any> = [];
 
   constructor(private afdb: AngularFireDatabase) {
     console.log('Hello JugadoresEquipoProvider Provider');
@@ -63,7 +64,8 @@ export class JugadoresEquipoProvider {
   }
 
   listarJugadores(){
-
+    this.jugadoresList = [];
+    
   }
 
   // obtenerJugador(clave: string){

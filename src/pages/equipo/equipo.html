@@ -17,8 +17,24 @@
       <a *ngFor="let jugador of equipoJugadores">{{jugador.nombre}}, {{jugador.elo}}<br></a>
     </ion-item>
     <ion-buttons>
-      <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
-      <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
-      <button ion-button (click)=addJugadores(equipo)>Añadir Jugadores</button>
+      <button ion-button
+        icon-only (click)="volver()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
     </ion-buttons>
-  </ion-content>
+    <ion-title>Equipo, {{equipo.nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+  
+<ion-content padding>
+  <ion-item>
+    {{equipo.nombre}}
+    <p *ngFor="let jugador of equipoJugadores | async">{{jugador.nombre}}, {{jugador.elo}}</p>
+  </ion-item>
+  <ion-buttons>
+    <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
+    <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
+    <button ion-button (click)=addJugadores(equipo)>Añadir Jugadores</button>
+  </ion-buttons>
+</ion-content>
