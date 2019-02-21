@@ -29,7 +29,7 @@ export class AddJornadaPage {
   equiposList: AngularFireList<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  private afdb: AngularFireDatabase) {
-    this.equiposList = afdb.list('/Equipos/', ref => ref.orderByChild('convocado').equalTo(false));
+    this.equiposList = afdb.list('/Equipos/', ref => ref.orderByChild('nombre'));
     this.equipos =  this.equiposList.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() })).reverse()
