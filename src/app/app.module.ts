@@ -100,7 +100,6 @@ var FirebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JugadoresEquipoProvider,
-    EquiposProvider,
   ]
 })
 export class AppModule {}

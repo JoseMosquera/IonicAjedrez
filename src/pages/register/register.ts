@@ -35,6 +35,7 @@ export class RegisterPage {
     f:0,
     elo:0,
     rol:'',
+    equipo:false,
     email:'',
     titular:false,
   };
