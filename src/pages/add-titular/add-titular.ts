@@ -8,6 +8,7 @@ import { EquiposPage } from '../equipos/equipos';
 import { Jornada } from '../../models/jornada';
 import { JornadaJugador } from '../../models/jornadaJugador';
 import { JornadasPage } from '../jornadas/jornadas';
+import { JornadaInfoPage } from '../jornada-info/jornada-info';
 
 @IonicPage()
 @Component({
@@ -39,7 +40,7 @@ export class AddTitularPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+    this.navCtrl.setRoot(JornadaInfoPage, {'equipo':this.jornada});
   }
 
   obtenerTitulares(clave: string){

@@ -60,22 +60,6 @@ export class JornadaInfoPage {
       })
   }
 
-  // verConvocados(jornada:Jornada){
-  //   this.navCtrl.setRoot(ConvocadosPage, {'jornada':jornada});
-  // }
-
-  // showjugadores(clave : string){
-  //   this.jugEquip.obtenerJugadores(clave).then(exist=>{
-  //     if (exist) {
-  //       this.titulares = this.jugEquip.jugadores;
-  //       console.log(this.titulares);
-  //     } else {
-  //       return null;
-  //     }
-  //   })
-
-  // }
-
   obtenerTitulares(equipo: string){
     this.navCtrl.setRoot(AddTitularPage, {'equipo': equipo, 'jornada': this.jornada});
   }
