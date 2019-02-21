@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Jornada } from '../../interfaces/jornada';
+import { Jornada } from '../../models/jornada';
 import { JornadasPage } from '../jornadas/jornadas';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { ConvocadosPage } from '../convocados/convocados';
-import { Equipo } from '../../interfaces/equipo';
-import { EquipoJugador } from '../../interfaces/equipoJugador';
 import { JugadoresEquipoProvider } from '../../providers/jugadores-equipo/jugadores-equipo';
-import { Observable } from 'rxjs';
 import { EditJornadaPage } from '../edit-jornada/edit-jornada';
+import { AddTitularPage } from "../add-titular/add-titular";
 
 @IonicPage()
 @Component({
@@ -18,8 +15,7 @@ import { EditJornadaPage } from '../edit-jornada/edit-jornada';
 export class JornadaInfoPage {
 
   jornada:Jornada;
-  equipoJugadores=[];
- 
+  titulares: Array<any> =[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, 
      private jugEquip: JugadoresEquipoProvider,) {
@@ -30,6 +26,7 @@ export class JornadaInfoPage {
     console.log('ionViewDidLoad JornadaInfoPage');
     let clave = this.jornada.key;
     console.log("Clave jornada jornada-info.ts: "+clave)
+    this.titularesObtener(clave);
   }
 
   volver(){
@@ -49,26 +46,37 @@ export class JornadaInfoPage {
     this.navCtrl.setRoot(JornadasPage);
   }
 
+  titularesObtener(clave: string){
+    this.jugEquip.titularesObt(clave)
+      .then(exist => {
+        console.log("Variable jugadoresEquipo desde equipo.ts: "+this.jugEquip.jugadoresEquipos);
+        if (exist) {
+          this.titulares = this.jugEquip.jugadoresEquipos;
+          console.log("Variable titulares en equipo.ts: ")
+          console.log(this.titulares);
+        } else {
+          return null;
+        }
+      })
+  }
+
   // verConvocados(jornada:Jornada){
   //   this.navCtrl.setRoot(ConvocadosPage, {'jornada':jornada});
   // }
 
-  showjugadores(clave : string){
-    this.jugEquip.obtenerJugadores(clave).then(exist=>{
-      if (exist) {
-        this.equipoJugadores = this.jugEquip.jugadores;
-        console.log(this.equipoJugadores);
-      } else {
-        return null;
-      }
-    })
+  // showjugadores(clave : string){
+  //   this.jugEquip.obtenerJugadores(clave).then(exist=>{
+  //     if (exist) {
+  //       this.titulares = this.jugEquip.jugadores;
+  //       console.log(this.titulares);
+  //     } else {
+  //       return null;
+  //     }
+  //   })
 
+  // }
+
+  obtenerTitulares(equipo: string){
+    this.navCtrl.setRoot(AddTitularPage, {'equipo': equipo, 'jornada': this.jornada});
   }
-
-  
-  
-
-
-  
-
 }

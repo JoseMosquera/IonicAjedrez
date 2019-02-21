@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from "angularfire2/database";
-import { Jugador } from "../../interfaces/jugador";
+import { Jugador } from "../../models/jugador";
 import { JugadoresPage } from '../jugadores/jugadores';
 import { JugadorPage } from '../jugador/jugador';
 

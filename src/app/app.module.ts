@@ -29,7 +29,6 @@ import { AddEquipoPage } from '../pages/add-equipo/add-equipo';
 import { AddJuegadorEquipoPage } from '../pages/add-juegador-equipo/add-juegador-equipo';
 import { EquipoPage } from '../pages/equipo/equipo';
 import { JugadoresEquipoProvider } from '../providers/jugadores-equipo/jugadores-equipo';
-import { EquiposProvider } from '../providers/equipos/equipos';
 
 //Jornadas
 import {JornadasPage} from '../pages/jornadas/jornadas';
@@ -37,6 +36,7 @@ import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
 import {JornadaInfoPage} from '../pages/jornada-info/jornada-info';
 import {ConvocadosPage} from '../pages/convocados/convocados';
 import {EditJornadaPage} from '../pages/edit-jornada/edit-jornada';
+import { AddTitularPage } from "../pages/add-titular/add-titular";
 
 
 var FirebaseConfig = {
@@ -68,8 +68,8 @@ var FirebaseConfig = {
     RegisterPage,
     JornadaInfoPage,
     ConvocadosPage,
-    EditJornadaPage
-
+    EditJornadaPage,
+    AddTitularPage,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +97,8 @@ var FirebaseConfig = {
     ConvocadosPage,
     CapitanesPage,
     RegisterPage,
-    EditJornadaPage
+    EditJornadaPage,
+    AddTitularPage,
   ],
   providers: [
     StatusBar,

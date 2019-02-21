@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Jugador } from "../../interfaces/jugador";
+import { Jugador } from "../../models/jugador";
 import { JugadoresPage } from '../jugadores/jugadores';
-import { Equipo } from '../../interfaces/equipo';
 
 @IonicPage()
 @Component({
@@ -27,7 +24,7 @@ export class AddJugadorPage {
     rol:'',
     equipo:false,
     email:'',
-    titular:false,
+    titular:'f',
   };
   nombre:string;
   j:number;
@@ -65,7 +62,7 @@ export class AddJugadorPage {
     this.jugador.f = 0;
     this.jugador.elo = 0;
     this.jugador.rol = "user";
-    this.jugador.titular = false;
+    this.jugador.titular = 'f';
     
     console.log(this.jugador);
     this.afdb.list("/Jugadores/").push(this.jugador);

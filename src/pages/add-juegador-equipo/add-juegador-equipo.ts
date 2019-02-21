@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Equipo } from '../../interfaces/equipo';
+import { Equipo } from '../../models/equipo';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { EquipoPage } from '../equipo/equipo';
-import { Jugador } from '../../interfaces/jugador';
-import { EquipoJugador } from '../../interfaces/equipoJugador';
+import { Jugador } from '../../models/jugador';
+import { EquipoJugador } from '../../models/equipoJugador';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
 import { EquiposPage } from '../equipos/equipos';
 

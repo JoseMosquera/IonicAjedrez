@@ -3,7 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Jugador } from "../../interfaces/jugador";
+import { Jugador } from "../../models/jugador";
 import { JugadorPage } from '../jugador/jugador';
 import { AddJugadorPage } from '../add-jugador/add-jugador';
 import { HomePage } from '../home/home';

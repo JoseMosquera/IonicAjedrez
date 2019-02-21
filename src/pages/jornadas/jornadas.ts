@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddJornadaPage } from '../add-jornada/add-jornada';
 import { HomePage } from '../home/home';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
-import { Jornada } from '../../interfaces/jornada';
+import { Jornada } from '../../models/jornada';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JornadaInfoPage } from '../jornada-info/jornada-info';

@@ -32,7 +32,7 @@
     <ion-item>
       <ion-label>Equipo que Juega:</ion-label>
       <ion-select [(ngModel)]="equip">
-        <ion-option *ngFor="let equi of equipos | async" value="{{equi.nombre}}">{{equi.nombre}}</ion-option>
+        <ion-option *ngFor="let equi of equipos | async" value="{{equi.key}}">{{equi.nombre}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

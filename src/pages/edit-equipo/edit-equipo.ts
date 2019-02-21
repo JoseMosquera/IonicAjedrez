@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Equipo } from '../../interfaces/equipo';
+import { Equipo } from '../../models/equipo';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EquipoPage } from '../equipo/equipo';
 import { EquiposPage } from '../equipos/equipos';

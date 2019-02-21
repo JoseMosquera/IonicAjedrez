@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Jugador } from '../../interfaces/jugador';
+import { Jugador } from '../../models/jugador';
 import { LoginPage } from '../login/login';
 
 /**
@@ -38,7 +38,6 @@ export class RegisterPage {
     equipo:false,
     email:'',
     titular:false,
-    equipo:false,
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase, public alert: AlertController) {

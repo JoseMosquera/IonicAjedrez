@@ -23,4 +23,10 @@
   <ion-item><p><b>Fecha:</b> {{jornada.fecha}}</p></ion-item>
   <br><br>
   <p style="text-align: center;"><u><b>EQUIPO: </b> {{jornada.equipo}}</u></p>
+
+  <ion-item *ngFor="let jugador of titulares">
+    <p>{{jugador.nombre}}, {{jugador.elo}}</p>
+  </ion-item>
+
+  <button ion-button (click)=obtenerTitulares(jornada.equipo)>Asignar Titulares</button>
 </ion-content>

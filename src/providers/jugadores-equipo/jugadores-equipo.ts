@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Jugador } from '../../interfaces/jugador';
+import { Jugador } from '../../models/jugador';
 import { map } from 'rxjs/operators';
 
 /*
@@ -22,6 +22,15 @@ export class JugadoresEquipoProvider {
   jugadoresListEquipo: Array<any> = [];
 
   rol: string;
+
+  equipo = {};
+  equiposList = [];
+  jugadoresEquipos = [];
+
+  claveList = [];
+
+  claveTitulares = [];
+  titularesJornada = [];
 
   constructor(private afdb: AngularFireDatabase) {
     console.log('Hello JugadoresEquipoProvider Provider');
@@ -244,8 +253,6 @@ export class JugadoresEquipoProvider {
           if (item) {
             console.log("variable item funcion expulsar jugador: ");
             console.log(item);
-
-            let participacion = item;
             
             this.afdb.database.ref('/EquiposJugadores/'+clave).remove();
 
@@ -269,7 +276,118 @@ export class JugadoresEquipoProvider {
     })
   }
 
-  comprobarRol(mail: string){
+  titulares(clave: string){
+    console.log("---------------titulares----------------")
+    console.log(clave);
+    return new Promise((resolve) => {
+      this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(clave)).valueChanges().subscribe(data => {
+        if(data){
+          console.log("Variable data en el povider, retorna objetos con el mismo key equipo: ");
+          console.log(data);
+
+          this.claveList = data;
+
+          this.claveList.forEach(element => {
+            let clave = element.jugador;
+
+            this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
+              console.log("Key del jugador provider: "+clave);
+              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data[0]));
+              console.log("--------------------------");
+              console.log(data[0]);
+              this.jugadoresEquipos.push(data[0]);
+              console.log(this.jugadoresEquipos);
+            });
+          });
+
+        console.log(this.jugadoresEquipos);
+        resolve(true);
+        this.jugadoresEquipos.length=0;
+
+          console.log(this.jugadoresEquipos);
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+    })
+  }
+
+  obtenerTitulares(clave: string){
+    console.log("---------------titulares----------------")
+    console.log(clave);
+    return new Promise((resolve) => {
+      this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(clave)).valueChanges().subscribe(data => {
+        if(data){
+          console.log("Variable data en el povider, retorna objetos con el mismo key equipo: ");
+          console.log(data);
+
+          this.claveList = data;
+
+          this.claveList.forEach(element => {
+            let clave = element.jugador;
+
+            this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
+              console.log("Key del jugador provider: "+clave);
+              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data[0]));
+              console.log("--------------------------");
+              console.log(data[0]);
+              this.titularesJornada.push(data[0]);
+              console.log(this.titularesJornada);
+            });
+          });
+
+        console.log(this.titularesJornada);
+        resolve(true);
+        this.titularesJornada.length=0;
+
+          console.log(this.titularesJornada);
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+    })
+  }
+
+  titularesObt(clave: string){
+    console.log("---------------titulares----------------")
+    console.log(clave);
+    return new Promise((resolve) => {
+      this.afdb.list('/JornadasJugadores/', ref => ref.orderByChild('jornada').equalTo(clave)).valueChanges().subscribe(data => {
+        if(data){
+          console.log("Variable data en el povider, retorna objetos con el mismo key equipo: ");
+          console.log(data);
+
+          this.claveTitulares = data;
+
+          this.claveTitulares.forEach(element => {
+            let clave = element.jugador;
+
+            this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
+              console.log("Key del jugador provider: "+clave);
+              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data[0]));
+              console.log("--------------------------");
+              console.log(data[0]);
+              this.jugadoresEquipos.push(data[0]);
+              console.log(this.jugadoresEquipos);
+            });
+          });
+
+        console.log(this.jugadoresEquipos);
+        resolve(true);
+        this.jugadoresEquipos.length=0;
+
+          console.log(this.jugadoresEquipos);
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+    })
+  }
+
+  comprobarRol(email: string){
     return new Promise((resolve, reject) => {
       this.afdb.list('/Jugadores/', ref => ref.orderByChild('email').equalTo(email))
         .valueChanges().subscribe(data => {

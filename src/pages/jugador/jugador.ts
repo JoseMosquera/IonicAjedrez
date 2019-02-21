@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from "angularfire2/database";
 import { JugadoresPage } from '../jugadores/jugadores';
 import { EditJugadorPage } from '../edit-jugador/edit-jugador';
-import { Jugador } from '../../interfaces/jugador';
+import { Jugador } from '../../models/jugador';
 
 /**
  * Generated class for the JugadorPage page.

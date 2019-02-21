@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Jornada } from '../../interfaces/jornada';
+import { Jornada } from '../../models/jornada';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { JornadasPage } from '../jornadas/jornadas';
 import { JornadaInfoPage } from '../jornada-info/jornada-info';
 import { Observable } from 'rxjs';
-import { Equipo } from '../../interfaces/equipo';
+import { Equipo } from '../../models/equipo';
 import { map } from 'rxjs/operators';
 
 /**

@@ -5,7 +5,7 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 import { JornadaInfoPage } from '../jornada-info/jornada-info';
-import { Jornada } from '../../interfaces/jornada';
+import { Jornada } from '../../models/jornada';
 
 
 @IonicPage()

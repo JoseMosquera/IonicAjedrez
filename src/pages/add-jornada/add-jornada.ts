@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Jornada } from '../../interfaces/jornada';
+import { Jornada } from '../../models/jornada';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { JornadasPage } from '../jornadas/jornadas';
-import { Equipo } from '../../interfaces/equipo';
+import { Equipo } from '../../models/equipo';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -21,6 +21,7 @@ export class AddJornadaPage {
     fecha:'',
   };
   
+  equipoKey:string;
   nombre:string;
   casa:string;
   fecha:string;

@@ -3,7 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Equipo } from "../../interfaces/equipo";
+import { Equipo } from "../../models/equipo";
 import { EquipoPage } from '../equipo/equipo';
 import { AddEquipoPage } from '../add-equipo/add-equipo';
 import { HomePage } from '../home/home';
