@@ -40,7 +40,7 @@ export class AddTitularPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(JornadaInfoPage, {'equipo':this.jornada});
+    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':this.jornada});
   }
 
   obtenerTitulares(clave: string){
