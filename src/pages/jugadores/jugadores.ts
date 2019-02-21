@@ -40,4 +40,6 @@ export class JugadoresPage {
     this.navCtrl.setRoot(HomePage);
   }
 
+  
+
 }

@@ -11,9 +11,16 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-buttons>
+    <button ion-button color="danger" outline (click)="eliminarJornada(jornada)">Eliminar jornada</button>
+    <button ion-button color="secondary" outline (click)="editarJornada(jornada)">Editar jornada</button>
+  </ion-buttons>
+  <br>
   <u><b><p style="text-align: center;">DETALLES DE LA JORNADA</p></b></u>
   <ion-item><p><b>Nombre:</b> {{jornada.nombre}}</p></ion-item>
   <ion-item *ngIf="jornada.casa == 't'"><p><b>Fuera o en casa:</b> en casa</p></ion-item>
   <ion-item *ngIf="jornada.casa == 'f'"><p><b>Fuera o en casa:</b> fuera</p></ion-item>
   <ion-item><p><b>Fecha:</b> {{jornada.fecha}}</p></ion-item>
+  <br><br>
+  <p style="text-align: center;"><u><b>EQUIPO: </b> {{jornada.equipo}}</u></p>
 </ion-content>

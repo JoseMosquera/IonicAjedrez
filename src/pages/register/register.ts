@@ -37,6 +37,7 @@ export class RegisterPage {
     rol:'',
     email:'',
     titular:false,
+    equipo:false,
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase, public alert: AlertController) {

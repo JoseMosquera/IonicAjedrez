@@ -36,6 +36,7 @@ import {JornadasPage} from '../pages/jornadas/jornadas';
 import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
 import {JornadaInfoPage} from '../pages/jornada-info/jornada-info';
 import {ConvocadosPage} from '../pages/convocados/convocados';
+import {EditJornadaPage} from '../pages/edit-jornada/edit-jornada';
 
 
 var FirebaseConfig = {
@@ -67,6 +68,8 @@ var FirebaseConfig = {
     RegisterPage,
     JornadaInfoPage,
     ConvocadosPage,
+    EditJornadaPage
+
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ var FirebaseConfig = {
     JornadaInfoPage,
     ConvocadosPage,
     CapitanesPage,
-    RegisterPage
+    RegisterPage,
+    EditJornadaPage
   ],
   providers: [
     StatusBar,
