@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { JugadoresEquipoProvider } from '../../providers/jugadores-equipo/jugadores-equipo';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -17,6 +18,10 @@ export class CapitanesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CapitanesPage');
     this.obtenerJugadores();
+  }
+
+  volver(){
+    this.navCtrl.setRoot(HomePage);
   }
 
   obtenerJugadores(){
