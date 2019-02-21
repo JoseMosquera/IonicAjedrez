@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { AlertController } from 'ionic-angular';
 import { Equipo } from '../../interfaces/equipo';
@@ -21,12 +21,16 @@ export class EquipoPage {
   equiposJugadoresList: AngularFireList<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, public alert: AlertController,
-              private jugEquip: JugadoresEquipoProvider){
-    
+              private jugEquip: JugadoresEquipoProvider, private toast: ToastController) {
+    this.equipo=this.navParams.get("equipo");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EquipoPage');
+    //vaciar el array equipoJugadores aqui
+    this.equipoJugadores.length = 0;
+    console.log("----------------vaciar array------------------")
+    console.log(this.equipoJugadores);
     let clave = this.equipo.key;
     console.log("Clave equipo equipo.ts: "+clave);
     this.jugadores(clave);
@@ -72,14 +76,33 @@ export class EquipoPage {
   capitan(jugador: Jugador){
     console.log("entra en la funcion capitan");
     console.log(jugador);
+    let capitanes = 0;
+    for (let i = 0; i < this.equipoJugadores.length; i++) {
+      console.log("entra en for de jugadores de la funcion");
+      console.log(this.equipoJugadores[i]);
+      console.log(this.equipoJugadores[i].rol);
+      if(this.equipoJugadores[i].rol == 'capitan'){
+        capitanes += 1;
+      }
+    }
+
     if (jugador.rol=='user') {
-      console.log("capitan = user");
-      jugador.rol='capitan';
-      this.afdb.list("/Jugadores/").update(jugador.key, jugador);
-      this.equipoJugadores.splice(0, this.equipoJugadores.length);
-      this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+      console.log(capitanes)
+      if(capitanes>0){
+        this.toast.create({
+          message: 'Solo puede haber un capitan por equipo.',
+          duration: 2000,
+          position: 'middle'
+        }).present();
+      } else if (capitanes<1) {
+        console.log("capitan = user");
+        jugador.rol='capitan';
+        this.afdb.list("/Jugadores/").update(jugador.key, jugador);
+        this.equipoJugadores.splice(0, this.equipoJugadores.length);
+        this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+      }
     } else if (jugador.rol=='capitan'){
-    console.log("capitan = capitan");
+      console.log("capitan = capitan");
       jugador.rol='user';
       this.afdb.list("/Jugadores/").update(jugador.key, jugador);
       this.equipoJugadores.splice(0, this.equipoJugadores.length);

@@ -1,28 +1,24 @@
 <ion-header>
-    <ion-navbar>
-      <ion-buttons>
-        <button ion-button
-          icon-only (click)="volver()">
-          <ion-icon name="md-arrow-back"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-title>Equipo, {{equipo.nombre}}</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button
+        icon-only (click)="volver()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Equipo, {{equipo.nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
   
 <ion-content padding>
   <h1>{{equipo.nombre}}</h1>
   <ion-item *ngFor="let jugador of equipoJugadores">
-    <p *ngIf="jugador.rol=='capitan'; else noCapitan" style="color: red">{{jugador.nombre}}, {{jugador.elo}}</p>
-      <ng-template #noCapitan>
-        <p *ngIf="jugador.rol=='user'; else noCapitan" style="color: black">{{jugador.nombre}}, {{jugador.elo}}</p>
-      </ng-template>
+    <p *ngIf="jugador.rol=='capitan';" style="color: red">{{jugador.nombre}}, {{jugador.elo}}</p>
+    <p *ngIf="jugador.rol=='user';" style="color: black">{{jugador.nombre}}, {{jugador.elo}}</p>
 
 
-    <!-- <button ion-button *ngIf="jugador.rol=='user'; else noCapitan" (click)=capitan(jugador)>Asignar Capitan</button>
-        <ng-template #noCapitan>
-            <button ion-button *ngIf="jugador.rol=='capitan'; else noCapitan" (click)=capitan(jugador)>Desasignar Capitan</button>
-        </ng-template> -->
+    <button ion-button *ngIf="jugador.rol=='user';" (click)=capitan(jugador)>Asignar Capitan</button>
+    <button ion-button *ngIf="jugador.rol=='capitan';" (click)=capitan(jugador)>Desasignar Capitan</button>
   </ion-item>
 
   <ion-buttons>
