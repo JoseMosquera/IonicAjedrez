@@ -49,5 +49,4 @@ export class EditJugadorPage {
     console.log("Jugador despues de ser actualizado: "+this.jugador.elo);
     this.navCtrl.setRoot(JugadoresPage);
   }
-
 }

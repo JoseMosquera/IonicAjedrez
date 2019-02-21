@@ -109,4 +109,19 @@ export class EquipoPage {
       this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
     }
   }
+
+  expulsar(jugador: Jugador){
+    let clave = this.equipo.key;
+    let jug = jugador.key
+    this.jugEquip.expulsarJugador(jugador, this.equipoJugadores)
+      .then(exist => {
+        console.log("Variable jugadoresEquipo desde equipo.ts: "+this.jugEquip.jugadores);
+        if (exist) {
+          console.log("Variable equipoJugadores en equipo.ts: ")
+        } else {
+          return null;
+        }
+      })
+    this.navCtrl.setRoot(EquiposPage);
+  }
 }

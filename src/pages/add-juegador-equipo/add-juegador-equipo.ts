@@ -6,6 +6,7 @@ import { EquipoPage } from '../equipo/equipo';
 import { Jugador } from '../../interfaces/jugador';
 import { EquipoJugador } from '../../interfaces/equipoJugador';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
+import { EquiposPage } from '../equipos/equipos';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,10 @@ import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugado
 export class AddJuegadorEquipoPage {
 
   equipo: Equipo;
-  jugadores = [];
+  jugadores: Array<any> = [];
   jugadoresList: AngularFireList<any>;
   equipoJugador: EquipoJugador={
+
     equipo:'',
     jugador:''
   };
@@ -63,6 +65,6 @@ export class AddJuegadorEquipoPage {
     let jugador1: Jugador = jugador;
     jugador1.equipo = true;
     this.afdb.list("/Jugadores/").update(jugador1.key, jugador1);
-    this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+    this.navCtrl.setRoot(EquiposPage);
   }
 }
