@@ -13,6 +13,7 @@ import * as firebase from 'firebase';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 //Jugadores
 import { JugadorPage } from '../pages/jugador/jugador';
@@ -60,6 +61,7 @@ var FirebaseConfig = {
     JornadasPage,
     AddJornadaPage,
     CapitanesPage,
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -84,13 +86,14 @@ var FirebaseConfig = {
     JornadasPage,
     AddJornadaPage,
     CapitanesPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JugadoresEquipoProvider,
-    EquiposProvider
+    EquiposProvider,
   ]
 })
 export class AppModule {}

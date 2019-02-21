@@ -5,12 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { JugadoresPage } from '../pages/jugadores/jugadores';
 import { HomePage } from '../pages/home/home';
-//import { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/login/login';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
   jugadores = JugadoresPage;
 
   constructor(platform: Platform, statusBar: StatusBar,

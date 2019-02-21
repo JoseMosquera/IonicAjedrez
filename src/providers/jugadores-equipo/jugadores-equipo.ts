@@ -30,7 +30,7 @@ export class JugadoresEquipoProvider {
     console.log(this.jugadores);
     this.jugadoresList.length = 0;
     console.log("funcion obtenerJugadores recibe un key de equipo: "+clave)
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(clave)).valueChanges().subscribe(data => {
         if (data) {
           console.log("Variable data en el povider, retorna objetos con el mismo key equipo: ");

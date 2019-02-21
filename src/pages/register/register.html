@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons left>
+			<button ion-button
+					icon-only (click)="volver()">
+				<ion-icon name="md-arrow-back"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>Register</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-item>
+		<ion-label color="primary" stacked>Nombre:</ion-label>
+		<ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" stacked>Email:</ion-label>
+		<ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" stacked>Password:</ion-label>
+		<ion-input type="password" [(ngModel)]="usuario.password"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<button ion-button (click)="register(usuario)">Registrarse</button><br>
+	</ion-item>

@@ -4,6 +4,8 @@ import { FormBuilder} from '@angular/forms';
 import * as firebase from 'firebase';
 import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { RegisterPage } from '../register/register';
 //import { AuthService } from '@ionic/cloud-angular';
 
 /**
@@ -25,7 +27,7 @@ export class LoginPage {
     password: "",
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder, public alert: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder,private afdb: AngularFireDatabase, public alert: AlertController) {
 
    
   }
@@ -52,30 +54,14 @@ export class LoginPage {
       alert.present();
     });
     
+    
   }
 
-  register(usuario){
-    firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.password).then(data=> {
-      let alert = this.alert.create({
-        title: 'Correcto!',
-        subTitle: 'Te has registrado correctamente!',
-        buttons: ['Aceptar']
-      });
-      alert.present();
-    });
+  goRegister(){
+    this.navCtrl.setRoot(RegisterPage);
   }
-
-  forgot(email){
-    console.log(email);
-    firebase.auth().sendPasswordResetEmail(email.toString()).then(data=> {
-      // Email sent.
-      console.log("Correcto.");
-    }).catch(data=> {
-      // An error happened.
-      console.log("Error.");
-    });
 
   }
     
 
-}
+

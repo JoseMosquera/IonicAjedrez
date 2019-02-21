@@ -15,7 +15,7 @@ import { Equipo } from '../../interfaces/equipo';
 export class AddJugadorPage {
 
   
-  jugador: Jugador = {
+  jugador : Jugador = {
     nombre:'',
     j:0,
     g:0,
