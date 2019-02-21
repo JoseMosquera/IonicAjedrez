@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+        <button ion-button
+          icon-only (click)="volver()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Detalles de la jornada</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <u><b><p style="text-align: center;">DETALLES DE LA JORNADA</p></b></u>
+  <ion-item><p><b>Nombre:</b> {{jornada.nombre}}</p></ion-item>
+  <ion-item *ngIf="jornada.casa == 't'"><p><b>Fuera o en casa:</b> en casa</p></ion-item>
+  <ion-item *ngIf="jornada.casa == 'f'"><p><b>Fuera o en casa:</b> fuera</p></ion-item>
+  <ion-item><p><b>Fecha:</b> {{jornada.fecha}}</p></ion-item>
+</ion-content>

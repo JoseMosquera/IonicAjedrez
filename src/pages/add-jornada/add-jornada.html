@@ -22,8 +22,17 @@
     <ion-item>
       <ion-label>Fuera o en casa:</ion-label>
       <ion-select [(ngModel)]="casa">
-        <ion-option value=True>En casa</ion-option>
-        <ion-option value=False>Fuera</ion-option>
+        <ion-option value='t'>En casa</ion-option>
+        <ion-option value='f'>Fuera</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Equipo que Juega:</ion-label>
+      <ion-select [(ngModel)]="equip">
+        <ion-option *ngFor="let equi of equipos | async" value="{{equi.key}}">{{equi.nombre}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

@@ -21,14 +21,14 @@ export class EquipoPage {
   equiposJugadoresList: AngularFireList<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, public alert: AlertController,
-              private jugEquip: JugadoresEquipoProvider) {
-    this.equipo=this.navParams.get("equipo");
+              private jugEquip: JugadoresEquipoProvider){
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EquipoPage');
     let clave = this.equipo.key;
-    console.log("Clave equipo equipo.ts: "+clave)
+    console.log("Clave equipo equipo.ts: "+clave);
     this.jugadores(clave);
   }
 

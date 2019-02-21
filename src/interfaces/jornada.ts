@@ -1,7 +1,7 @@
 export interface Jornada{
     key?:string;
     nombre:string;
-    partido:Array<any>;
-    casa:boolean;
+    equipo:string;
+    casa:string;
     fecha:string;
 }   

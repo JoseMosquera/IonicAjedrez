@@ -33,6 +33,9 @@ import { EquiposProvider } from '../providers/equipos/equipos';
 //Jornadas
 import {JornadasPage} from '../pages/jornadas/jornadas';
 import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
+import {JornadaInfoPage} from '../pages/jornada-info/jornada-info';
+import {ConvocadosPage} from '../pages/convocados/convocados';
+
 
 var FirebaseConfig = {
   apiKey: "AIzaSyBOgG67GAPCRSOke2r_24VQ-SPaF6wy6ko",
@@ -60,6 +63,8 @@ var FirebaseConfig = {
     JornadasPage,
     AddJornadaPage,
     RegisterPage,
+    JornadaInfoPage,
+    ConvocadosPage,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +88,9 @@ var FirebaseConfig = {
     AddJuegadorEquipoPage,
     JornadasPage,
     AddJornadaPage,
-    RegisterPage
+    RegisterPage,
+    JornadaInfoPage,
+    ConvocadosPage,
   ],
   providers: [
     StatusBar,

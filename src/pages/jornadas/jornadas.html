@@ -26,8 +26,8 @@
     <ion-item *ngFor="let jornada of jornadas | async">
     {{jornada.nombre}} 
     <ion-buttons left>
-        <button ion-button small >Agregar jugador</button>
-      </ion-buttons>
+      <button ion-button small (click)="verJornada(jornada)">Ver Jornada</button>
+    </ion-buttons>
     </ion-item>
   </ion-list>
 </ion-content>

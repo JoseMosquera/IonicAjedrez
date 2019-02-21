@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Jornada } from '../../interfaces/jornada';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { JornadasPage } from '../jornadas/jornadas';
+import { Equipo } from '../../interfaces/equipo';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -13,16 +16,26 @@ export class AddJornadaPage {
 
   jornada:Jornada={
     nombre:'',
-    partido:[],
-    casa: true,
+    equipo:'',
+    casa:'',
     fecha:'',
   };
   
   nombre:string;
-  casa:boolean;
+  casa:string;
   fecha:string;
+  equip:string;
+  equipos: Observable<Equipo[]>;
+  equiposList: AngularFireList<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  private afdb: AngularFireDatabase) {
+    this.equiposList = afdb.list('/Equipos/', ref => ref.orderByChild('convocado').equalTo(false));
+    this.equipos =  this.equiposList.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() })).reverse()
+     )
+    );
+   console.log(this.equipos);
   }
 
   ionViewDidLoad() {
@@ -33,8 +46,8 @@ export class AddJornadaPage {
     console.log("entra")
     this.jornada.nombre=this.nombre;
     console.log(this.jornada.nombre);
-    this.jornada.partido=[];
-    console.log(this.jornada.partido);
+    this.jornada.equipo=this.equip;
+    console.log(this.jornada.equipo);
     this.jornada.casa=this.casa;
     console.log(this.jornada.casa);
     this.jornada.fecha=this.fecha;

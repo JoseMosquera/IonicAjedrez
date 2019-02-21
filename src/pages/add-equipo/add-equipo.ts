@@ -20,7 +20,7 @@ export class AddEquipoPage {
 
   equipo: Equipo = {
     nombre: '',
-    categoria: ''
+    categoria: '',
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {

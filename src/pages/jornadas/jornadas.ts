@@ -6,6 +6,7 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Jornada } from '../../interfaces/jornada';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JornadaInfoPage } from '../jornada-info/jornada-info';
 
 /**
  * Generated class for the JornadasPage page.
@@ -44,6 +45,10 @@ export class JornadasPage {
 
   volver(){
     this.navCtrl.setRoot(HomePage);
+  }
+
+  verJornada(jornada:Jornada){
+    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':jornada});
   }
 
 }

@@ -11,4 +11,5 @@ export interface Jugador{
     rol:string,
     email:string,
     equipo:boolean,
+    titular:boolean,
 }
