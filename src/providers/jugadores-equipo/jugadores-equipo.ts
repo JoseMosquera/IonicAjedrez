@@ -13,16 +13,21 @@ export class JugadoresEquipoProvider {
   jugadores: Array<any> = [];
   jugadoresList: Array<any> = [];
 
+  capitanes: Array<any> = [];
+  capitanesList: Array<any> = [];
   
   pertenecenList: Array<any> = [];
   jugadoresListEquipo: Array<any> = [];
 
   constructor(private afdb: AngularFireDatabase) {
     console.log('Hello JugadoresEquipoProvider Provider');
+    this.jugadores.length = 0;
+    console.log(this.jugadores);
   }
 
   obtenerJugadores(clave: string){
     this.jugadores.length = 0;
+    console.log(this.jugadores);
     this.jugadoresList.length = 0;
     console.log("funcion obtenerJugadores recibe un key de equipo: "+clave)
     return new Promise((resolve, reject) => {
@@ -33,20 +38,36 @@ export class JugadoresEquipoProvider {
 
           this.jugadoresList = data;
 
+          console.log(this.jugadoresList);
+
           this.jugadoresList.forEach(element => {
 
             let clave = element.jugador;
 
+            console.log(this.jugadores);  
+
             this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
               console.log("Key del jugador provider: "+clave);
-              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data));
+              console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data[0]));
               console.log("--------------------------");
               console.log(data[0]);
               this.jugadores.push(data[0]);
-
+              console.log(this.jugadores);
             });
           });
 
+          console.log("hola");
+          console.log(this.jugadores.length);
+          if (this.jugadores.length>3) {
+            console.log("entra en el if");
+            for (let i = 0; i < this.jugadores.length; i++) {
+              console.log(i);
+              if (i>3) {
+                console.log("entra en segundo if");
+                this.jugadores[i].pop();
+              }
+            }
+          }
 
           // data.forEach(element => {
           //   console.log(element);
@@ -199,6 +220,35 @@ export class JugadoresEquipoProvider {
           }
         });
       }
+    })
+  }
+
+  listarCapitanes(){
+    return new Promise((resolve, reject) => {
+      this.afdb.list('/Jugadores/', ref => ref.orderByChild('rol').equalTo('capitan'))
+        .valueChanges().subscribe(data => {
+          if(data){
+            console.log("Variable data jugador en el povider funcion listarCapitanes: "+JSON.stringify(data));
+
+            console.log("valor data");
+            console.log(data);
+            this.capitanes = data;
+            console.log("valor capitanes");
+            console.log(this.capitanes);
+
+            // this.capitanesList.forEach(element => {
+            //   console.log("variable monkey foreach capitanesList");
+            //   console.log(element);
+            //     this.capitanes.push(element);
+            //     console.log(this.capitanes);
+            // });
+
+            // console.log(this.capitanes);
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        })
     })
   }
 }

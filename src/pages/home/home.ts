@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import { AlertController } from 'ionic-angular';
 import { EquiposPage } from '../equipos/equipos';
 import { JornadasPage } from '../jornadas/jornadas';
+import { CapitanesPage } from '../capitanes/capitanes';
 
 @Component({
   selector: 'page-home',
@@ -14,10 +15,6 @@ import { JornadasPage } from '../jornadas/jornadas';
 export class HomePage {
 
   constructor(public navCtrl: NavController, private menuCtrl: MenuController, public alert: AlertController) {
-  }
-
-  irPaginaJugadores(){
-    this.navCtrl.setRoot(JugadoresPage);
   }
 
   mostrarMenu(){
@@ -45,5 +42,13 @@ export class HomePage {
 
   irPaginaJornadas(){
     this.navCtrl.setRoot(JornadasPage);
+  }
+
+  irPaginaJugadores(){
+    this.navCtrl.setRoot(JugadoresPage);
+  }
+
+  irPaginaCapitanes(){
+    this.navCtrl.setRoot(CapitanesPage);
   }
 }

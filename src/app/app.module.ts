@@ -19,6 +19,7 @@ import { JugadorPage } from '../pages/jugador/jugador';
 import { JugadoresPage } from '../pages/jugadores/jugadores';
 import { AddJugadorPage } from '../pages/add-jugador/add-jugador';
 import { EditJugadorPage } from '../pages/edit-jugador/edit-jugador';
+import { CapitanesPage } from "../pages/capitanes/capitanes";
 
 //Equipos
 import { EquiposPage } from '../pages/equipos/equipos';
@@ -58,6 +59,7 @@ var FirebaseConfig = {
     AddJuegadorEquipoPage,
     JornadasPage,
     AddJornadaPage,
+    CapitanesPage,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ var FirebaseConfig = {
     AddEquipoPage,
     AddJuegadorEquipoPage,
     JornadasPage,
-    AddJornadaPage
+    AddJornadaPage,
+    CapitanesPage,
   ],
   providers: [
     StatusBar,
