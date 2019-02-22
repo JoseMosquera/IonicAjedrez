@@ -8,6 +8,7 @@ import { EquiposPage } from '../equipos/equipos';
 import { AddJuegadorEquipoPage } from '../add-juegador-equipo/add-juegador-equipo';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
 import { Jugador } from '../../models/jugador';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -19,10 +20,13 @@ export class EquipoPage {
   equipo:Equipo;
   equipoJugadores = [];
   equiposJugadoresList: AngularFireList<any>;
+  rol:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, public alert: AlertController,
               private jugEquip: JugadoresEquipoProvider, private toast: ToastController) {
     this.equipo=this.navParams.get("equipo");
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -46,11 +50,11 @@ export class EquipoPage {
     console.log(equipo);
     this.afdb.database.ref('/Equipos/'+key).remove();
     console.log("Equipo eliminado")
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 
   volver(){
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 
   jugadores(clave: string){
@@ -70,7 +74,7 @@ export class EquipoPage {
   addJugadores(equipo: Equipo){
     var equiposJugadores = this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('equipo').equalTo(this.equipo.key));
     this.equipoJugadores.splice(0, this.equipoJugadores.length);
-    this.navCtrl.setRoot(AddJuegadorEquipoPage, {'equipo': equipo, 'equiposJugadores': equiposJugadores});
+    this.navCtrl.setRoot(AddJuegadorEquipoPage, {'equipo': equipo, 'equiposJugadores': equiposJugadores, 'rol':this.rol});
   }
 
   capitan(jugador: Jugador){
@@ -99,14 +103,14 @@ export class EquipoPage {
         jugador.rol='capitan';
         this.afdb.list("/Jugadores/").update(jugador.key, jugador);
         this.equipoJugadores.splice(0, this.equipoJugadores.length);
-        this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+        this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo, 'rol':this.rol});
       }
     } else if (jugador.rol=='capitan'){
       console.log("capitan = capitan");
       jugador.rol='user';
       this.afdb.list("/Jugadores/").update(jugador.key, jugador);
       this.equipoJugadores.splice(0, this.equipoJugadores.length);
-      this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+      this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo, 'rol':this.rol});
     }
   }
 
@@ -122,6 +126,6 @@ export class EquipoPage {
           return null;
         }
       })
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 }

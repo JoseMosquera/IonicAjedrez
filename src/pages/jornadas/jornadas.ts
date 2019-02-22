@@ -25,6 +25,8 @@ export class JornadasPage {
   jornadas: Observable<Jornada[]>;
   jornadasList: AngularFireList<any>;
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
     this.jornadasList=afdb.list("Jornada");
     this.jornadas=this.jornadasList.snapshotChanges().pipe(
@@ -33,6 +35,8 @@ export class JornadasPage {
      )
     );
     console.log(this.jornadas);
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -40,15 +44,15 @@ export class JornadasPage {
   }
 
   addJornada(){
-    this.navCtrl.setRoot(AddJornadaPage);
+    this.navCtrl.setRoot(AddJornadaPage, {'rol':this.rol});
   }
 
   volver(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage, {'rol':this.rol});
   }
 
   verJornada(jornada:Jornada){
-    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':jornada});
+    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':jornada, 'rol':this.rol});
   }
 
 }

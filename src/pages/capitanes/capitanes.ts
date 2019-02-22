@@ -12,7 +12,11 @@ export class CapitanesPage {
 
   jugadores = [];
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private jugEquip: JugadoresEquipoProvider) {
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -21,7 +25,7 @@ export class CapitanesPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage, {'rol':this.rol});
   }
 
   obtenerJugadores(){

@@ -10,11 +10,66 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <ion-item>
     {{jugador.nombre}}
   </ion-item>
-  <button ion-button (click)=editarJugador(jugador)>Editar Jugador</button>
-  <button ion-button (click)=eliminarJugador(jugador)>Eliminar Jugador</button>
+
+  <ion-grid>
+    <ion-row>
+    <ion-col col-2 col-sm>
+        Name
+      </ion-col>
+      <ion-col col-1 col-sm>
+        J
+      </ion-col>
+      <ion-col col-1 col-sm>
+        V
+      </ion-col>
+      <ion-col col-1 col-sm>
+        E
+      </ion-col>
+      <ion-col col-1 col-sm>
+        D
+      </ion-col>
+      <ion-col col-1 col-sm>
+        C
+      </ion-col>
+      <ion-col col-1 col-sm>
+        F
+      </ion-col>
+      <ion-col col-2 col-sm>
+        Elo
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2 col-sm >
+        {{ jugador.nombre }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.j }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.g }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.e }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.p }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.c }}
+      </ion-col>
+      <ion-col col-1 col-sm>
+        {{ jugador.f }}
+      </ion-col>
+      <ion-col col-2 col-sm>
+        {{ jugador.elo }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <button ion-button *ngIf="rol=='admin';" (click)=editarJugador(jugador)>Editar Jugador</button>
+  <button ion-button *ngIf="rol=='admin';" (click)=eliminarJugador(jugador)>Eliminar Jugador</button>
 </ion-content>

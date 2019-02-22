@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,7 +18,9 @@ export class JugadoresPage {
   jugadores: Observable<Jugador[]>;
   jugadoresList: AngularFireList<any>;
 
-  constructor(public navCtrl: NavController, private afdb: AngularFireDatabase) {
+  rol:string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
     this.jugadoresList = afdb.list('/Jugadores/', ref => ref.orderByChild('elo'));
     this.jugadores =  this.jugadoresList.snapshotChanges().pipe(
       map(changes =>
@@ -26,18 +28,20 @@ export class JugadoresPage {
      )
     );
    console.log(this.jugadores);
+   this.rol=this.navParams.get("rol");
+   console.log(this.rol);
   }
 
   addJugador(){
-    this.navCtrl.setRoot(AddJugadorPage);
+    this.navCtrl.setRoot(AddJugadorPage, {'rol':this.rol});
   }
 
   irJugador(jugador: Jugador){
-    this.navCtrl.setRoot(JugadorPage, {'jugador': jugador});
+    this.navCtrl.setRoot(JugadorPage, {'jugador': jugador, 'rol':this.rol});
   }
 
   volver(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage, {'rol':this.rol});
   }
 
   

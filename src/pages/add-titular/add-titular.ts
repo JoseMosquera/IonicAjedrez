@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { EquipoPage } from '../equipo/equipo';
 import { Jugador } from '../../models/jugador';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
-import { EquiposPage } from '../equipos/equipos';
 import { Jornada } from '../../models/jornada';
 import { JornadaJugador } from '../../models/jornadaJugador';
 import { JornadasPage } from '../jornadas/jornadas';
@@ -23,13 +21,19 @@ export class AddTitularPage {
   jugadoresList: AngularFireList<any>;
   jornadaJugador: JornadaJugador={
     jornada:'',
-    jugador:''
+    jornadanombre:'',
+    jugador:'',
+    jugadornombre:'',
   };
+
+  rol:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, private jugEquip: JugadoresEquipoProvider) {
     this.equipo=this.navParams.get("equipo");
     console.log(this.equipo);
     this.jornada=this.navParams.get("jornada");
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -40,7 +44,7 @@ export class AddTitularPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':this.jornada});
+    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':this.jornada, 'rol':this.rol});
   }
 
   obtenerTitulares(clave: string){
@@ -62,13 +66,15 @@ export class AddTitularPage {
     console.log(this.jornada.key);
     console.log(jugador.key);
     this.jornadaJugador.jornada = this.jornada.key;
+    this.jornadaJugador.jornadanombre = this.jornada.nombre;
     this.jornadaJugador.jugador = jugador.key;
+    this.jornadaJugador.jugadornombre = jugador.nombre;
     console.log(this.jornadaJugador);
     this.afdb.list("/JornadasJugadores/").push(this.jornadaJugador);
     let jugador1: Jugador = jugador;
     jugador1.titular = 't';
     this.afdb.list("/Jugadores/").update(jugador1.key, jugador1);
-    this.navCtrl.setRoot(JornadasPage);
+    this.navCtrl.setRoot(JornadasPage, {'rol':this.rol});
   }
 
   delete(jugador:Jugador){
@@ -83,6 +89,6 @@ export class AddTitularPage {
     let jugador1: Jugador = jugador;
     jugador1.titular = 'f';
     this.afdb.list("/Jugadores/").update(jugador1.key, jugador1);
-    this.navCtrl.setRoot(JornadasPage);
+    this.navCtrl.setRoot(JornadasPage, {'rol':this.rol});
   }
 }

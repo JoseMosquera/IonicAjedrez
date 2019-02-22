@@ -23,10 +23,13 @@ export class AddJuegadorEquipoPage {
     equipo:'',
     jugador:''
   };
+  rol:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, private jugEquip: JugadoresEquipoProvider) {
     this.equipo=this.navParams.get("equipo");
     console.log(this.equipo);
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -37,7 +40,7 @@ export class AddJuegadorEquipoPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo});
+    this.navCtrl.setRoot(EquipoPage, {'equipo':this.equipo, 'rol':this.rol});
   }
 
   obtenerJugadores(categoria: string){
@@ -65,6 +68,6 @@ export class AddJuegadorEquipoPage {
     let jugador1: Jugador = jugador;
     jugador1.equipo = true;
     this.afdb.list("/Jugadores/").update(jugador1.key, jugador1);
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 }

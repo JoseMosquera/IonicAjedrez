@@ -22,8 +22,11 @@ export class AddEquipoPage {
     nombre: '',
     categoria: '',
   }
+  rol:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -32,11 +35,11 @@ export class AddEquipoPage {
 
   add(){
     this.afdb.list("/Equipos/").push(this.equipo);
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 
   volver(){
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 
 }

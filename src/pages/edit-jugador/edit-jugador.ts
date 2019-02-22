@@ -22,9 +22,13 @@ export class EditJugadorPage {
   f:number;
   elo:number;
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
     this.jugador = this.navParams.get("jugador");
     console.log(this.jugador);
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -32,7 +36,7 @@ export class EditJugadorPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(JugadorPage, {'jugador': this.jugador});
+    this.navCtrl.setRoot(JugadorPage, {'jugador': this.jugador, 'rol':this.rol});
   }
 
   update(){
@@ -47,6 +51,6 @@ export class EditJugadorPage {
     this.jugador.elo = Number(this.elo);
     this.afdb.list("/Jugadores/").update(this.jugador.key, this.jugador);
     console.log("Jugador despues de ser actualizado: "+this.jugador.elo);
-    this.navCtrl.setRoot(JugadoresPage);
+    this.navCtrl.setRoot(JugadoresPage, {'rol':this.rol});
   }
 }

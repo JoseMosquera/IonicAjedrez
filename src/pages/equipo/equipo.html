@@ -16,13 +16,14 @@
     <p *ngIf="jugador.rol=='capitan';" style="color: red">{{jugador.nombre}}, {{jugador.elo}}</p>
     <p *ngIf="jugador.rol=='user';" style="color: black">{{jugador.nombre}}, {{jugador.elo}}</p>
 
-
-    <button ion-button *ngIf="jugador.rol=='user';" (click)=capitan(jugador)>Asignar Capitan</button>
-    <button ion-button *ngIf="jugador.rol=='capitan';" (click)=capitan(jugador)>Desasignar Capitan</button>
-    <button ion-button (click)=expulsar(jugador)>Explusar de Equipo</button>
+    <div *ngIf="rol=='admin';">
+      <button ion-button *ngIf="jugador.rol=='user';" (click)=capitan(jugador)>Asignar Capitan</button>
+      <button ion-button *ngIf="jugador.rol=='capitan';" (click)=capitan(jugador)>Desasignar Capitan</button>
+      <button ion-button (click)=expulsar(jugador)>Explusar de Equipo</button>
+    </div>
   </ion-item>
 
-  <ion-buttons>
+  <ion-buttons *ngIf="rol=='admin';">
     <button ion-button (click)=editarEquipo(equipo)>Editar Equipo</button>
     <button ion-button (click)=eliminarEquipo(equipo)>Eliminar Equipo</button>
     <button ion-button (click)=addJugadores(equipo)>Añadir Jugadores</button>

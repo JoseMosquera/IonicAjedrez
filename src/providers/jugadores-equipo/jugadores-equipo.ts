@@ -3,12 +3,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Jugador } from '../../models/jugador';
 import { map } from 'rxjs/operators';
 
-/*
-  Generated class for the JugadoresEquipoProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class JugadoresEquipoProvider {
 
@@ -276,6 +270,53 @@ export class JugadoresEquipoProvider {
     })
   }
 
+  desasignarTitular(jugador: Jugador, listado: Array<any>){
+    console.log("--------------------expulsarJugador-------------------");
+    let clave = jugador.key;
+    return new Promise((resolve, reject) => {
+      this.afdb.list('/EquiposJugadores/', ref => ref.orderByChild('jugador').equalTo(clave))
+        .snapshotChanges().pipe(
+          map(actions => 
+            actions.map(a => ({ key: a.key, ...a.payload.val() }))
+          )
+        ).subscribe(item => {
+          let claveList = item.map(item => item.key);
+
+          let clave;
+
+          claveList.forEach(element => {
+            clave = element;
+          });
+          
+          console.log("clave: ");
+          console.log(clave);
+
+          if (item) {
+            console.log("variable item funcion expulsar jugador: ");
+            console.log(item);
+            
+            this.afdb.database.ref('/EquiposJugadores/'+clave).remove();
+
+            listado.forEach(element => {
+              console.log("variable element dentro de foreach data: ");
+              console.log(element);
+              if(element.key == jugador.key){
+                console.log("jugador antes de editar");
+                console.log(jugador);
+                jugador.equipo = false;
+                this.afdb.list("/Jugadores/").update(jugador.key, jugador);
+                console.log("jugador despues de editar");
+                console.log(jugador);
+              }
+            });
+            resolve(true);
+          } else {
+            resolve(false)
+          }
+        });
+    })
+  }
+
   titulares(clave: string){
     console.log("---------------titulares----------------")
     console.log(clave);
@@ -364,7 +405,7 @@ export class JugadoresEquipoProvider {
           this.claveTitulares.forEach(element => {
             let clave = element.jugador;
 
-            this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave)).valueChanges().subscribe(data => {
+            this.afdb.list('/JornadasJugadores/', ref => ref.orderByChild('jugador').equalTo(clave)).valueChanges().subscribe(data => {
               console.log("Key del jugador provider: "+clave);
               console.log("Variable data jugador en el povider funcion obtenerJugador: "+JSON.stringify(data[0]));
               console.log("--------------------------");
@@ -374,12 +415,9 @@ export class JugadoresEquipoProvider {
             });
           });
 
-        console.log(this.jugadoresEquipos);
-        resolve(true);
-        this.jugadoresEquipos.length=0;
-
           console.log(this.jugadoresEquipos);
           resolve(true);
+          this.jugadoresEquipos.length=0;
         } else {
           resolve(false);
         }
@@ -392,13 +430,15 @@ export class JugadoresEquipoProvider {
       this.afdb.list('/Jugadores/', ref => ref.orderByChild('email').equalTo(email))
         .valueChanges().subscribe(data => {
           if(data){
-            console.log("Variable data jugador en el povider funcion listarCapitanes: "+JSON.stringify(data));
+            console.log("Variable data jugador en el povider funcion comprobarRol: "+JSON.stringify(data));
 
             console.log("valor data");
             console.log(data);
-            this.capitanes = data;
-            console.log("valor capitanes");
-            console.log(this.capitanes);
+            data.forEach(element => {
+              this.rol = element.rol;
+            });
+            console.log("valor rol");
+            console.log(this.rol);
             resolve(true);
           } else {
             resolve(false);

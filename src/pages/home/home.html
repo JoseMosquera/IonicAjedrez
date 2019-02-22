@@ -24,7 +24,8 @@
     <ion-item (click)="irPaginaJornadas()">
       <ion-icon name="clipboard" item-start></ion-icon>
         Jornadas
-    </ion-item><ion-item (click)="irPaginaCapitanes()">
+    </ion-item>
+    <ion-item *ngIf="rol=='admin';" (click)="irPaginaCapitanes()">
         <ion-icon name="flag" item-start></ion-icon>
         Capitanes
     </ion-item>

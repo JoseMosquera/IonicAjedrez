@@ -14,9 +14,13 @@ export class EditEquipoPage {
 
   equipo:Equipo;
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
     this.equipo = this.navParams.get("equipo");
     console.log(this.equipo);
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -24,14 +28,14 @@ export class EditEquipoPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(EquipoPage, {'equipo': this.equipo});
+    this.navCtrl.setRoot(EquipoPage, {'equipo': this.equipo, 'rol':this.rol});
   }
 
   update(){
     console.log("Equipo antes de ser actualizado: "+this.equipo.nombre);
     this.afdb.list("/Equipos/").update(this.equipo.key, this.equipo);
     console.log("Equipo despues de ser actualizado: "+this.equipo.nombre);
-    this.navCtrl.setRoot(EquiposPage);
+    this.navCtrl.setRoot(EquiposPage, {'rol':this.rol});
   }
 
 }

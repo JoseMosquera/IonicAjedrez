@@ -7,7 +7,7 @@
       </button>
     </ion-buttons>
     <ion-title>Jornadas</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="rol=='admin';">
         <button ion-button (click)="addJornada()">
           <ion-icon name="add"></ion-icon>
         </button>

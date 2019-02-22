@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
   jugadores = JugadoresPage;
 
   constructor(platform: Platform, statusBar: StatusBar,

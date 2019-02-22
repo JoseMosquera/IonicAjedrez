@@ -30,6 +30,8 @@ export class EditJornadaPage {
   equipos: Observable<Equipo[]>;
   equiposList: AngularFireList<any>;
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
     this.jornada = this.navParams.get("jornada");
     console.log(this.jornada);
@@ -40,6 +42,8 @@ export class EditJornadaPage {
      )
     );
    console.log(this.equipos);
+   this.rol=this.navParams.get("rol");
+   console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -53,11 +57,11 @@ export class EditJornadaPage {
     this.jornada.fecha = this.fecha;
     this.afdb.list("/Jornada/").update(this.jornada.key, this.jornada);
     console.log("Jornada despues de ser actualizada: "+this.jornada.nombre);
-    this.navCtrl.setRoot(JornadasPage);
+    this.navCtrl.setRoot(JornadasPage, {'rol':this.rol});
   }
 
   volver(jornada:Jornada){
-    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':jornada});
+    this.navCtrl.setRoot(JornadaInfoPage, {'jornada':jornada, 'rol':this.rol});
   }
 
 }

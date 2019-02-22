@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-buttons>
+  <ion-buttons *ngIf="rol=='admin';">
     <button ion-button color="danger" outline (click)="eliminarJornada(jornada)">Eliminar jornada</button>
     <button ion-button color="secondary" outline (click)="editarJornada(jornada)">Editar jornada</button>
   </ion-buttons>
@@ -25,8 +25,9 @@
   <p style="text-align: center;"><u><b>EQUIPO: </b> {{jornada.equipo}}</u></p>
 
   <ion-item *ngFor="let jugador of titulares">
-    <p>{{jugador.nombre}}, {{jugador.elo}}</p>
+    <p>{{jugador.jugadornombre}} <span *ngIf="jugador.resultado" end>{{jugador.resultado}}</span></p>
   </ion-item>
 
-  <button ion-button (click)=obtenerTitulares(jornada.equipo)>Asignar Titulares</button>
+  <button *ngIf="rol=='admin';" ion-button (click)=obtenerTitulares(jornada.equipo)>Asignar Titulares</button>
+  <button *ngIf="rol=='capitan';" ion-button (click)=obtenerTitulares(jornada.equipo)>Asignar Titulares</button>
 </ion-content>

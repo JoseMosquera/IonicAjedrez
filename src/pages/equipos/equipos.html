@@ -13,7 +13,7 @@
     <ion-title>
       Equipos
     </ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="rol=='admin';">
       <button ion-button (click)="addEquipo()">
         <ion-icon name="add"></ion-icon>
       </button>

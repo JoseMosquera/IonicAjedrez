@@ -34,7 +34,6 @@ import { JugadoresEquipoProvider } from '../providers/jugadores-equipo/jugadores
 import {JornadasPage} from '../pages/jornadas/jornadas';
 import {AddJornadaPage} from '../pages/add-jornada/add-jornada';
 import {JornadaInfoPage} from '../pages/jornada-info/jornada-info';
-import {ConvocadosPage} from '../pages/convocados/convocados';
 import {EditJornadaPage} from '../pages/edit-jornada/edit-jornada';
 import { AddTitularPage } from "../pages/add-titular/add-titular";
 
@@ -67,7 +66,6 @@ var FirebaseConfig = {
     CapitanesPage,
     RegisterPage,
     JornadaInfoPage,
-    ConvocadosPage,
     EditJornadaPage,
     AddTitularPage,
   ],
@@ -94,7 +92,6 @@ var FirebaseConfig = {
     JornadasPage,
     AddJornadaPage,
     JornadaInfoPage,
-    ConvocadosPage,
     CapitanesPage,
     RegisterPage,
     EditJornadaPage,

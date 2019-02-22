@@ -17,9 +17,13 @@ export class JornadaInfoPage {
   jornada:Jornada;
   titulares: Array<any> =[];
 
+  rol:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb:AngularFireDatabase, 
      private jugEquip: JugadoresEquipoProvider,) {
     this.jornada=this.navParams.get("jornada");
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -30,11 +34,11 @@ export class JornadaInfoPage {
   }
 
   volver(){
-    this.navCtrl.setRoot(JornadasPage);
+    this.navCtrl.setRoot(JornadasPage, {'rol':this.rol});
   }
 
   editarJornada(jornada){
-    this.navCtrl.setRoot(EditJornadaPage, {'jornada': jornada});
+    this.navCtrl.setRoot(EditJornadaPage, {'jornada': jornada, 'rol':this.rol});
   }
 
   eliminarJornada(jornada){
@@ -43,7 +47,7 @@ export class JornadaInfoPage {
     console.log(jornada);
     this.afdb.database.ref('/Jornada/'+key).remove();
     console.log("Jornada eliminado")
-    this.navCtrl.setRoot(JornadasPage);
+    this.navCtrl.setRoot(JornadasPage, {'rol':this.rol});
   }
 
   titularesObtener(clave: string){
@@ -61,6 +65,6 @@ export class JornadaInfoPage {
   }
 
   obtenerTitulares(equipo: string){
-    this.navCtrl.setRoot(AddTitularPage, {'equipo': equipo, 'jornada': this.jornada});
+    this.navCtrl.setRoot(AddTitularPage, {'equipo': equipo, 'jornada': this.jornada, 'rol':this.rol});
   }
 }

@@ -35,10 +35,14 @@ export class AddJugadorPage {
   f:number;
   elo:number;
 
+  rol:string;
+
   // equipos: Observable<Equipo[]>;
   // equiposList: AngularFireList<any>;
 
-  constructor(public navCtrl: NavController, private afdb: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularFireDatabase) {
+    this.rol=this.navParams.get("rol");
+    console.log(this.rol);
   }
 
   ionViewDidLoad() {
@@ -66,10 +70,10 @@ export class AddJugadorPage {
     
     console.log(this.jugador);
     this.afdb.list("/Jugadores/").push(this.jugador);
-    this.navCtrl.setRoot(JugadoresPage);
+    this.navCtrl.setRoot(JugadoresPage, {'rol':this.rol});
   }
 
   volver(){
-    this.navCtrl.setRoot(JugadoresPage);
+    this.navCtrl.setRoot(JugadoresPage, {'rol':this.rol});
   }
 }
