@@ -1,0 +1,35 @@
+<!--
+  Generated template for the AddResultadoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+        <button ion-button
+          icon-only (click)="volver()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Añadir resultado</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <ion-item>
+        <ion-label>Puntos</ion-label>
+        <ion-select [(ngModel)]="resultado">
+          <ion-option value="Ha ganado">Ha ganado</ion-option>
+          <ion-option value="Ha empatado">Ha empatado</ion-option>
+          <ion-option value="Ha perdido">Ha perdido</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="update()">Guardar cambios</button>
+
+</ion-content>

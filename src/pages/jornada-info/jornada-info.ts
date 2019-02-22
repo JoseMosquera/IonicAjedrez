@@ -6,6 +6,8 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { JugadoresEquipoProvider } from '../../providers/jugadores-equipo/jugadores-equipo';
 import { EditJornadaPage } from '../edit-jornada/edit-jornada';
 import { AddTitularPage } from "../add-titular/add-titular";
+import { Jugador } from '../../models/jugador';
+import { AddResultadoPage } from '../add-resultado/add-resultado';
 
 @IonicPage()
 @Component({
@@ -66,5 +68,10 @@ export class JornadaInfoPage {
 
   obtenerTitulares(equipo: string){
     this.navCtrl.setRoot(AddTitularPage, {'equipo': equipo, 'jornada': this.jornada, 'rol':this.rol});
+  }
+
+  addResultado(jugador:Jugador){
+    this.navCtrl.setRoot(AddResultadoPage, {'jugador':jugador, 'rol':this.rol, 'jornada':this.jornada});
+
   }
 }

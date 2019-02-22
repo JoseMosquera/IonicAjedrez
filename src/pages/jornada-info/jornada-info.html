@@ -25,7 +25,12 @@
   <p style="text-align: center;"><u><b>EQUIPO: </b> {{jornada.equipo}}</u></p>
 
   <ion-item *ngFor="let jugador of titulares">
-    <p>{{jugador.jugadornombre}} <span *ngIf="jugador.resultado" end>{{jugador.resultado}}</span></p>
+    <p>{{jugador.jugadornombre}} | <span *ngIf="jugador.resultado" end>{{jugador.resultado}}</span> 
+      <span *ngIf="!jugador.resultado;">
+        <button ion-button *ngIf="rol=='admin';" (click)=addResultado(jugador)>Asignar Resultado</button>
+        <button ion-button *ngIf="rol=='capitan';" (click)=addResultado(jugador)>Asignar Resultado</button>
+      </span> 
+    </p>
   </ion-item>
 
   <button *ngIf="rol=='admin';" ion-button (click)=obtenerTitulares(jornada.equipo)>Asignar Titulares</button>
