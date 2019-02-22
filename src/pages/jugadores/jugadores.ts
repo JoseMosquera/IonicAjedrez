@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Jugador } from "../../models/jugador";
 import { JugadorPage } from '../jugador/jugador';
-import { AddJugadorPage } from '../add-jugador/add-jugador';
 import { HomePage } from '../home/home';
 
 @IonicPage()
@@ -32,10 +31,6 @@ export class JugadoresPage {
    console.log(this.rol);
   }
 
-  addJugador(){
-    this.navCtrl.setRoot(AddJugadorPage, {'rol':this.rol});
-  }
-
   irJugador(jugador: Jugador){
     this.navCtrl.setRoot(JugadorPage, {'jugador': jugador, 'rol':this.rol});
   }
@@ -43,7 +38,4 @@ export class JugadoresPage {
   volver(){
     this.navCtrl.setRoot(HomePage, {'rol':this.rol});
   }
-
-  
-
 }

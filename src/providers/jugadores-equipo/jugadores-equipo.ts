@@ -446,4 +446,63 @@ export class JugadoresEquipoProvider {
         })
     })
   }
+
+  resultados(clave: string, resultado:string, casa: string){
+    return new Promise((resolve, reject) => {
+      this.afdb.list('/Jugadores/', ref => ref.orderByChild('key').equalTo(clave))
+        .valueChanges().subscribe(data => {
+          if(data){
+            console.log("Variable data jugador en el povider funcion comprobarRol: "+JSON.stringify(data));
+
+            console.log("valor data");
+            console.log(data);
+            data.forEach(element => {
+              console.log("elemenr: ");
+              console.log(element);
+              let jugador = element;
+              console.log("jugador antes de modificar: ");
+              console.log(jugador);
+              if (resultado=="Ha ganado") {
+                jugador.elo += 2;
+                jugador.g += 1;
+                jugador.j +=1;
+                if (casa=='t') {
+                  jugador.c +=1;
+                } else if (casa=='f'){
+                  jugador.f += 1;
+                }
+              } else if (resultado=="Ha empatado"){
+                jugador.elo += 1;
+                jugador.e += 1;
+                jugador.j +=1;
+                if (casa=='t') {
+                  jugador.c +=1;
+                } else if (casa=='f'){
+                  jugador.f += 1;
+                }
+              } else if (resultado=="Ha perdido"){
+                jugador.elo += 1;
+                jugador.p += 1;
+                jugador.j +=1;
+                if (casa=='t') {
+                  jugador.c +=1;
+                } else if (casa=='f'){
+                  jugador.f += 1;
+                }
+              }
+              
+              console.log("jugador despues de modificar: ");
+              console.log(jugador);
+              this.afdb.list("/Jugadores/").update(jugador.key, jugador);
+            });
+
+            console.log("valor rol");
+            console.log(this.rol);
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        })
+    })
+  }
 }

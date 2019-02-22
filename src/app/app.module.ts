@@ -18,7 +18,6 @@ import { RegisterPage } from '../pages/register/register';
 //Jugadores
 import { JugadorPage } from '../pages/jugador/jugador';
 import { JugadoresPage } from '../pages/jugadores/jugadores';
-import { AddJugadorPage } from '../pages/add-jugador/add-jugador';
 import { EditJugadorPage } from '../pages/edit-jugador/edit-jugador';
 import { CapitanesPage } from "../pages/capitanes/capitanes";
 
@@ -54,7 +53,6 @@ var FirebaseConfig = {
     HomePage,
     JugadorPage,
     JugadoresPage,
-    AddJugadorPage,
     EditJugadorPage,
     LoginPage,
     EquipoPage,
@@ -83,7 +81,6 @@ var FirebaseConfig = {
     HomePage,
     JugadorPage,
     JugadoresPage,
-    AddJugadorPage,
     EditJugadorPage,
     LoginPage,
     EquipoPage,

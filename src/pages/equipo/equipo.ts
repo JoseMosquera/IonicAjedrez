@@ -8,7 +8,6 @@ import { EquiposPage } from '../equipos/equipos';
 import { AddJuegadorEquipoPage } from '../add-juegador-equipo/add-juegador-equipo';
 import { JugadoresEquipoProvider } from "../../providers/jugadores-equipo/jugadores-equipo";
 import { Jugador } from '../../models/jugador';
-import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -41,7 +40,7 @@ export class EquipoPage {
   }
 
   editarEquipo(equipo: Equipo){
-    this.navCtrl.setRoot(EditEquipoPage, {'equipo': equipo});
+    this.navCtrl.setRoot(EditEquipoPage, {'equipo': equipo, 'rol': this.rol});
   }
 
   eliminarEquipo(equipo: Equipo){

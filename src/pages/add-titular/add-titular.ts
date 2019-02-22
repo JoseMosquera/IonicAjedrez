@@ -24,6 +24,7 @@ export class AddTitularPage {
     jornadanombre:'',
     jugador:'',
     jugadornombre:'',
+    resultado:'',
   };
 
   rol:string;
@@ -69,6 +70,7 @@ export class AddTitularPage {
     this.jornadaJugador.jornadanombre = this.jornada.nombre;
     this.jornadaJugador.jugador = jugador.key;
     this.jornadaJugador.jugadornombre = jugador.nombre;
+    this.jornadaJugador.resultado = '';
     console.log(this.jornadaJugador);
     this.afdb.list("/JornadasJugadores/").push(this.jornadaJugador);
     let jugador1: Jugador = jugador;
@@ -85,7 +87,6 @@ export class AddTitularPage {
     this.jornadaJugador.jugador = jugador.key;
     console.log(this.jornadaJugador);
     this.afdb.list("/JornadasJugadores/").push(this.jornadaJugador);
-    //buscar una
     let jugador1: Jugador = jugador;
     jugador1.titular = 'f';
     this.afdb.list("/Jugadores/").update(jugador1.key, jugador1);
